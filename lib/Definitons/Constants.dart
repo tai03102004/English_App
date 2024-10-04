@@ -1,5 +1,4 @@
 import 'package:app/Definitons/size_config.dart';
-import 'package:flutter/material.dart';
 
 double animatedPositionedLEftValue(int currentIndex) {
   switch (currentIndex) {
@@ -17,9 +16,3 @@ double animatedPositionedLEftValue(int currentIndex) {
       return 0;
   }
 }
-
-final List<Color> gradient = [
-  Colors.yellow.withOpacity(0.8),
-  Colors.yellow.withOpacity(0.5),
-  Colors.transparent
-];

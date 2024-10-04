@@ -1,3 +1,4 @@
+import 'package:app/Definitons/Color.dart';
 import 'package:app/Widgets/Home/HomeItem.dart';
 import 'package:app/helpers/DotsIndicator.dart';
 import 'package:flutter/material.dart';
@@ -39,12 +40,13 @@ class _Home extends State<Home> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
-                      color: Colors.green,
+                      color: sectionColors['sidebar'],
                     ),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                     child: Text("1",
-                        style: TextStyle(fontSize: 10, color: Colors.white)),
+                        style: TextStyle(
+                            fontSize: 10, color: sectionColors['bg_white'])),
                   )
                 ],
               ),
