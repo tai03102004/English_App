@@ -9,20 +9,36 @@ class HomeItem extends StatefulWidget {
 }
 
 class _HomeItem extends State<HomeItem> {
-  final List<String> entries = <String>['A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+  final List<String> entries = <String>[
+    'Animals',
+    'In the City',
+    'Alphabet',
+    'Nature',
+  ];
+  final List<String> images = <String>[
+    'assets/images/animal.png',
+    'assets/images/street.png',
+    'assets/images/alphabet.png',
+    'assets/images/park.png'
+  ];
+  final List<Color> colorCodes = <Color>[
+    Color(0xFFA1D7FF),
+    Color(0xFF6AFF5D),
+    Color(0xFFFFDA35),
+    Color(0xFFFF8D8D)
+  ];
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.only(top: 75),
+      padding: const EdgeInsets.only(top: 75, bottom: 120),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
           height: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
-            color: Colors.amber[colorCodes[index]],
+            color: colorCodes[index],
           ),
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
           child: Row(
@@ -76,7 +92,7 @@ class _HomeItem extends State<HomeItem> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(44, 0, 0, 0),
                       child: Text(
-                        "Animals",
+                        entries[index],
                         style: TextStyle(
                             fontSize: 21,
                             fontWeight: FontWeight.w700,
@@ -96,7 +112,7 @@ class _HomeItem extends State<HomeItem> {
                               offset: Offset(0, 2),
                             ),
                           ],
-                          color: Color(0xFF86CDFF),
+                          color: colorCodes[index],
                         ),
                         width: 60,
                         height: 18,
@@ -138,7 +154,7 @@ class _HomeItem extends State<HomeItem> {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 27, 0),
                 child: Image.asset(
-                  'assets/images/animal.png',
+                  images[index],
                   width: 83,
                   height: 83,
                   // fit: BoxFit.cover,

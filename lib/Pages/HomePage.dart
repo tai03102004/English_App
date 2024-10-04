@@ -33,7 +33,9 @@ class _HomePageState extends State<HomePage>
               bottom: 10,
               right: 0,
               left: 0,
-              child: Menu(currentIndex: currentIndex),
+              child: SafeArea(
+                child: Menu(currentIndex: currentIndex),
+              ),
             ),
           ],
         ),

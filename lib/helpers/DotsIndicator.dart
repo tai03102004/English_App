@@ -1,3 +1,4 @@
+import 'package:app/Definitons/Color.dart';
 import 'package:flutter/material.dart';
 
 class DotsIndicator extends StatelessWidget {
@@ -21,7 +22,9 @@ class DotsIndicator extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             shape: BoxShape.rectangle,
-            color: index == currentIndex ? Colors.green : Colors.grey.shade300,
+            color: index == currentIndex
+                ? sectionColors['sidebar']
+                : sectionColors['dot_home'],
           ),
         );
       }),

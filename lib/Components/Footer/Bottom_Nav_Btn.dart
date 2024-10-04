@@ -1,3 +1,4 @@
+import 'package:app/Definitons/Color.dart';
 import 'package:app/Definitons/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class BottomNavBtn extends StatelessWidget {
             height: AppSizes.blockSizeHorizontal * 13,
             width: AppSizes.blockSizeHorizontal * 17,
             decoration: BoxDecoration(
-              color: Colors.transparent,
+              color: sectionColors['transparent'],
             ),
             child: Stack(alignment: Alignment.center, children: [
               (currentIndex == index)
@@ -34,7 +35,7 @@ class BottomNavBtn extends StatelessWidget {
                       bottom: AppSizes.blockSizeHorizontal * 1.5,
                       child: Icon(
                         icon,
-                        color: const Color.fromARGB(59, 0, 0, 0),
+                        color: sectionColors['footer_icon_shadow'],
                         size: AppSizes.blockSizeHorizontal * 7,
                       ),
                     )
@@ -45,7 +46,7 @@ class BottomNavBtn extends StatelessWidget {
                 curve: Curves.easeIn,
                 child: Icon(
                   icon,
-                  color: Colors.yellow[400],
+                  color: sectionColors['footer_icon'],
                   size: AppSizes.blockSizeHorizontal * 8,
                 ),
               )

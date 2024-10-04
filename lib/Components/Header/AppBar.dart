@@ -1,3 +1,4 @@
+import 'package:app/Definitons/Color.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
@@ -11,9 +12,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
         height: 120,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          gradient: LinearGradient(
-            colors: <Color>[Color(0xFF8CEF42), Color(0xFF58A700)],
-          ),
+          gradient: sectionColors['header'],
         ),
         child: SafeArea(
           child: Row(

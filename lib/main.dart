@@ -1,4 +1,7 @@
+import 'package:app/Pages/AiBrainPage.dart';
 import 'package:app/Pages/HomePage.dart';
+import 'package:app/Widgets/Auth/Login.dart';
+import 'package:app/Widgets/Auth/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -26,6 +29,9 @@ class MyWidget extends StatelessWidget {
       initialRoute: '/',
       routes: {
         "/": (context) => const HomePage(),
+        "/signup": (context) => const SignUp(),
+        "/login": (context) => const Login(),
+        '/aiBrain': (context) => AiBrainPage(),
       },
       debugShowCheckedModeBanner: false,
     );
