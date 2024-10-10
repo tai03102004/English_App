@@ -53,7 +53,7 @@ class _Home extends State<Home> {
               SizedBox(
                 height: 10,
               ),
-              DotsIndicator(currentIndex: 1, totalDots: 6),
+              DotsIndicator(currentIndex: 0, totalDots: 6),
             ],
           ),
         ),
