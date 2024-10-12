@@ -1,33 +1,21 @@
-import 'package:app/Definitons/size_config.dart';
+import 'package:app/Components/HomeTopButton.dart';
 import 'package:flutter/material.dart';
 
-class CrownPage extends StatefulWidget {
-  const CrownPage({super.key});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _CrownPage createState() => _CrownPage();
-}
-
-class _CrownPage extends State<CrownPage> with SingleTickerProviderStateMixin {
-  int currentIndex = 0;
+class CrownPage extends StatelessWidget {
+  const CrownPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    AppSizes().init(context);
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('CrownPage'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context); // Quay lại trang trước đó
-          },
+      body: SafeArea(
+        child: Column(
+          children: [
+            HomeTopButton(),
+            Center(
+              child: Text("NEWS"),
+            ),
+          ],
         ),
-      ),
-      body: Center(
-        child: const Text("CrownPage"),
       ),
     );
   }
