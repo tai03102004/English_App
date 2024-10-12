@@ -6,6 +6,7 @@ import 'package:app/Widgets/Home/Topics/Alphabet.dart';
 import 'package:app/Widgets/Home/Topics/Animal.dart';
 import 'package:app/Widgets/Home/Topics/City.dart';
 import 'package:app/Widgets/Home/Topics/Nature.dart';
+
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -30,7 +31,7 @@ class MyWidget extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: {
         "/": (context) => const HomePage(),
         "/signup": (context) => const SignUp(),

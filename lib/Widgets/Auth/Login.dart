@@ -10,10 +10,12 @@ class Login extends StatefulWidget {
 class _Login extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/');
-        },
-        child: Text("Login"));
+    return Container(
+        color: Colors.red,
+        child: TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            },
+            child: Text("Login")));
   }
 }
