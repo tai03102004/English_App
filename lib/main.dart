@@ -3,27 +3,20 @@ import 'package:app/Pages/HomePage.dart';
 import 'package:app/Widgets/Auth/Login.dart';
 import 'package:app/Widgets/Auth/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    theme: ThemeData(fontFamily: "Roboto-Black"),
-    home: const SafeArea(
-      child: Scaffold(
-        body: MyWidget(),
-      ),
-    ),
-    debugShowCheckedModeBanner: false,
-  ));
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  runApp(MyApp());
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: "Roboto-Black",
         scaffoldBackgroundColor: Colors.white,
       ),
       initialRoute: '/',
