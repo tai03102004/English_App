@@ -1,3 +1,4 @@
+import 'package:app/Components/HomeTopButton.dart';
 import 'package:flutter/material.dart';
 
 class Cities extends StatefulWidget {
@@ -11,13 +12,14 @@ class Cities extends StatefulWidget {
 class _Cities extends State<Cities> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          margin: EdgeInsets.all(20),
-          child: Text("Cities"),
-        )
-      ],
+    return Scaffold(
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            HomeTopButton(),
+          ],
+        ),
+      ),
     );
   }
 }

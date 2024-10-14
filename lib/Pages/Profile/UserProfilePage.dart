@@ -20,12 +20,6 @@ class _UserProfilePage extends State<UserProfilePage>
     return Scaffold(
       appBar: AppBar(
         title: const Text('UserProfilePage'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context); // Quay lại trang trước đó
-          },
-        ),
       ),
       body: Center(
         child: const Text("UserProfilePage"),

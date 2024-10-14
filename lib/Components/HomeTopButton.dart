@@ -6,12 +6,32 @@ class HomeTopButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        AppRoundedButton(
-          iconData: Icons.menu,
-        )
-      ],
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      sliver: SliverToBoxAdapter(
+        child: Row(
+          children: [
+            AppRoundedButton(
+              iconData: Icons.keyboard_return_outlined,
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            const Spacer(),
+            AppRoundedButton(
+              iconData: Icons.search,
+              onTap: () {},
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            AppRoundedButton(
+              iconData: Icons.notifications_outlined,
+              onTap: () {},
+            )
+          ],
+        ),
+      ),
     );
   }
 }

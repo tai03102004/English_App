@@ -1,4 +1,7 @@
-import 'package:app/Definitons/normalizeRote.dart';
+import 'package:app/Widgets/Home/Topics/Alphabet.dart';
+import 'package:app/Widgets/Home/Topics/Animals.dart';
+import 'package:app/Widgets/Home/Topics/In_the_city.dart';
+import 'package:app/Widgets/Home/Topics/Nature.dart';
 import 'package:flutter/material.dart';
 
 class HomeItem extends StatefulWidget {
@@ -15,6 +18,12 @@ class _HomeItem extends State<HomeItem> {
     'In the City',
     'Alphabet',
     'Nature',
+  ];
+  final List<Widget> pages = <Widget>[
+    Animals(),
+    Cities(),
+    Alphabet(),
+    Nature(),
   ];
   final List<String> images = <String>[
     'assets/images/animal.png',
@@ -35,9 +44,10 @@ class _HomeItem extends State<HomeItem> {
       padding: const EdgeInsets.only(top: 75, bottom: 120),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
-        return TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/${normalizeRoute(entries[index])}');
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => pages[index]));
           },
           child: Container(
             height: 100,
@@ -45,7 +55,7 @@ class _HomeItem extends State<HomeItem> {
               borderRadius: BorderRadius.circular(24),
               color: colorCodes[index],
             ),
-            margin: const EdgeInsets.symmetric(horizontal: 24),
+            margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

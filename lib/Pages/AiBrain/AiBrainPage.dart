@@ -20,12 +20,6 @@ class _AiBrainPage extends State<AiBrainPage>
     return Scaffold(
       appBar: AppBar(
         title: const Text('AiBrainPage'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context); // Quay lại trang trước đó
-          },
-        ),
       ),
       body: Center(
         child: const Text("AiBrainPage"),
