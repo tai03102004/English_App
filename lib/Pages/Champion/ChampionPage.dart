@@ -20,12 +20,6 @@ class _ChampionPage extends State<ChampionPage>
     return Scaffold(
       appBar: AppBar(
         title: const Text('ChampionPage'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context); // Quay lại trang trước đó
-          },
-        ),
       ),
       body: Center(
         child: const Text("ChampionPage"),

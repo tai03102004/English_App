@@ -1,3 +1,4 @@
+import 'package:app/Components/HomeTopButton.dart';
 import 'package:flutter/material.dart';
 
 class Animals extends StatefulWidget {
@@ -11,13 +12,14 @@ class Animals extends StatefulWidget {
 class _Animals extends State<Animals> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          margin: EdgeInsets.all(20),
-          child: Text("ANINAL"),
-        )
-      ],
+    return Scaffold(
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            HomeTopButton(),
+          ],
+        ),
+      ),
     );
   }
 }

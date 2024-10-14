@@ -8,19 +8,19 @@ class BottomNavBtn extends StatelessWidget {
       required this.icon,
       required this.index,
       required this.currentIndex,
-      required this.onPressed});
+      required this.onTap});
 
   final IconData icon;
   final int index;
   final int currentIndex;
-  final Function(int) onPressed;
+  final Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
     AppSizes().init(context);
-    return InkWell(
+    return GestureDetector(
         onTap: () {
-          onPressed(index);
+          onTap(index);
         },
         child: Container(
             height: AppSizes.blockSizeHorizontal * 13,

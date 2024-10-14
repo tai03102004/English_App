@@ -1,3 +1,4 @@
+import 'package:app/Components/HomeTopButton.dart';
 import 'package:flutter/material.dart';
 
 class Alphabet extends StatefulWidget {
@@ -11,13 +12,14 @@ class Alphabet extends StatefulWidget {
 class _Alphabet extends State<Alphabet> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          margin: EdgeInsets.all(20),
-          child: Text("Alphabet"),
-        )
-      ],
+    return Scaffold(
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            HomeTopButton(),
+          ],
+        ),
+      ),
     );
   }
 }
