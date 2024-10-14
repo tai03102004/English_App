@@ -1,3 +1,4 @@
+import 'package:app/Pages/Auth/LoginPage.dart';
 import 'package:app/Pages/MainHome.dart';
 
 import 'package:flutter/material.dart';
@@ -19,7 +20,10 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       initialRoute: '/',
-      home: const MainPage(),
+      routes: {
+        '/': (context) => LoginPage(),
+        '/home': (context) => MainPage(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
