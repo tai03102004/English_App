@@ -13,7 +13,6 @@ class News extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            // HomeTopButton(),
             HomeHeading(
               title: "Breking news",
               traling: TextButton(onPressed: () {}, child: Text("View all")),
