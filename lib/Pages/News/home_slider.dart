@@ -1,4 +1,5 @@
 import 'package:app/Data/News/dummy.dart';
+import 'package:app/Definitons/normalizePage.dart';
 import 'package:app/Pages/News/home_slider_item.dart';
 import 'package:app/helpers/DotsIndicator.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,9 @@ class _HomeSliderState extends State<HomeSlider> {
         SizedBox(
           height: 10,
         ),
-        DotsIndicator(currentIndex: _pageIndex, totalDots: newsrItems.length),
+        DotsIndicator(
+            currentIndex: normalizePageIndex(_pageIndex),
+            totalDots: newsrItems.length < 8 ? newsrItems.length : 8),
       ],
     ));
   }

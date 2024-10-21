@@ -1,4 +1,8 @@
 import 'package:app/Definitons/size_config.dart';
+import 'package:app/Widgets/Ranking/Leader_board.dart';
+import 'package:app/Widgets/Ranking/announce_user.dart';
+import 'package:app/Widgets/Ranking/ranking_list.dart';
+import 'package:app/Widgets/Ranking/timer_ranking.dart';
 import 'package:flutter/material.dart';
 
 class ChampionPage extends StatefulWidget {
@@ -12,6 +16,7 @@ class ChampionPage extends StatefulWidget {
 class _ChampionPage extends State<ChampionPage>
     with SingleTickerProviderStateMixin {
   int currentIndex = 0;
+  bool check = true;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +24,53 @@ class _ChampionPage extends State<ChampionPage>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ChampionPage'),
+        title: const Text("Ranking"),
+        actions: [
+          PopupMenuButton<int>(
+            icon: Icon(
+              Icons.more_vert,
+              size: 25,
+            ),
+            offset: Offset(0, 40),
+            onSelected: (value) {
+              setState(() {
+                if (value == 1) {
+                  check = false;
+                } else if (value == 2) {
+                  check = true;
+                }
+              });
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: 1,
+                child: ListTile(
+                  leading: Icon(Icons.view_list_outlined, size: 20),
+                  title: Text("Lists", style: TextStyle(fontSize: 14)),
+                ),
+              ),
+              const PopupMenuItem(
+                value: 2,
+                child: ListTile(
+                  leading: Icon(Icons.leaderboard, size: 20),
+                  title: Text("Leadings", style: TextStyle(fontSize: 14)),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
-      body: Center(
-        child: const Text("ChampionPage"),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            TimerRanking(),
+            if (check) AnnounceUser(),
+            if (check) LeaderboardWidget(),
+            RankingList(
+              check: check,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -71,4 +71,40 @@ Nullam vel eros vel ligula vestibulum tincidunt vitae quis dui. Nullam nec elit 
 
 Proin venenatis aliquam risus ut malesuada. Sed interdum dolor et tempus volutpat. Duis tempor dui sit amet justo dapibus hendrerit. In commodo tortor vel erat hendrerit, vitae posuere sapien porta. Pellentesque cursus nunc in convallis dictum. Suspendisse fermentum tincidunt auctor. Suspendisse potenti. Nullam diam est, pharetra quis tellus nec, cursus efficitur purus. Nulla lorem justo, mattis id metus nec, tempus tincidunt felis. Phasellus dapibus ut tellus eu lacinia. Ut ornare, ipsum in vestibulum pharetra, mauris mauris porta risus, at elementum nunc nisi id ex. Pellentesque pellentesque leo eget odio egestas tempor. Quisque rutrum mauris a odio vestibulum imperdiet. Curabitur vel ullamcorper enim, non blandit tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent euismod felis vitae hendrerit tincidunt.'''
   },
+  {
+    'imageAssetPath': 'assets/images/raster/news_4.jpeg',
+    'category': 'World',
+    'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    'author': 'John',
+    'date': '2023-02-27',
+    'title': 'What training Do Vollyball Players Need',
+    'content':
+        '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis sem sed rutrum tincidunt. Donec eget magna pellentesque, sodales justo quis, fermentum massa. Ut sagittis est id auctor tempus. Curabitur vitae pharetra libero. In hac habitasse platea dictumst. Sed imperdiet est nec enim sollicitudin ultricies. Morbi placerat turpis eget velit pretium, in porttitor tellus ullamcorper. Proin enim orci, placerat quis porttitor et, hendrerit ut orci. Nullam luctus elementum ipsum, eu pretium nisi egestas sit amet. Maecenas nibh augue, sagittis in orci non, pulvinar fermentum ex. In fringilla scelerisque eros a fringilla.
+
+Nullam id fermentum purus. Aliquam nisl eros, ultricies malesuada sem eu, ullamcorper luctus justo. Phasellus a faucibus lorem. Curabitur porttitor nulla dui, sed imperdiet arcu condimentum vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ac varius purus, non ornare nunc. Nulla facilisi.
+
+Suspendisse laoreet eros eget eros feugiat porttitor. Sed sagittis, nibh id facilisis auctor, felis dolor ultricies ligula, non lobortis turpis tellus ut diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique libero et mi tempor, vel fermentum augue consequat. Fusce eu luctus turpis. Fusce ac vestibulum nisi. Proin vestibulum massa mauris, sed tincidunt elit cursus rutrum. Aenean semper scelerisque sapien eu ultricies. Pellentesque tempus vulputate aliquam. Nulla eget nunc a ante suscipit ultricies. Morbi tempus sit amet turpis pulvinar iaculis.
+
+Nullam vel eros vel ligula vestibulum tincidunt vitae quis dui. Nullam nec elit malesuada, efficitur mi at, commodo neque. Sed sed tellus mauris. Integer eget ultricies risus. Phasellus a dui quis augue consequat suscipit. In vel euismod purus, non aliquam mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Proin venenatis aliquam risus ut malesuada. Sed interdum dolor et tempus volutpat. Duis tempor dui sit amet justo dapibus hendrerit. In commodo tortor vel erat hendrerit, vitae posuere sapien porta. Pellentesque cursus nunc in convallis dictum. Suspendisse fermentum tincidunt auctor. Suspendisse potenti. Nullam diam est, pharetra quis tellus nec, cursus efficitur purus. Nulla lorem justo, mattis id metus nec, tempus tincidunt felis. Phasellus dapibus ut tellus eu lacinia. Ut ornare, ipsum in vestibulum pharetra, mauris mauris porta risus, at elementum nunc nisi id ex. Pellentesque pellentesque leo eget odio egestas tempor. Quisque rutrum mauris a odio vestibulum imperdiet. Curabitur vel ullamcorper enim, non blandit tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent euismod felis vitae hendrerit tincidunt.'''
+  },
+  {
+    'imageAssetPath': 'assets/images/raster/news_4.jpeg',
+    'category': 'World',
+    'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    'author': 'John',
+    'date': '2023-02-27',
+    'title': 'What training Do Vollyball Players Need',
+    'content':
+        '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis sem sed rutrum tincidunt. Donec eget magna pellentesque, sodales justo quis, fermentum massa. Ut sagittis est id auctor tempus. Curabitur vitae pharetra libero. In hac habitasse platea dictumst. Sed imperdiet est nec enim sollicitudin ultricies. Morbi placerat turpis eget velit pretium, in porttitor tellus ullamcorper. Proin enim orci, placerat quis porttitor et, hendrerit ut orci. Nullam luctus elementum ipsum, eu pretium nisi egestas sit amet. Maecenas nibh augue, sagittis in orci non, pulvinar fermentum ex. In fringilla scelerisque eros a fringilla.
+
+Nullam id fermentum purus. Aliquam nisl eros, ultricies malesuada sem eu, ullamcorper luctus justo. Phasellus a faucibus lorem. Curabitur porttitor nulla dui, sed imperdiet arcu condimentum vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ac varius purus, non ornare nunc. Nulla facilisi.
+
+Suspendisse laoreet eros eget eros feugiat porttitor. Sed sagittis, nibh id facilisis auctor, felis dolor ultricies ligula, non lobortis turpis tellus ut diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique libero et mi tempor, vel fermentum augue consequat. Fusce eu luctus turpis. Fusce ac vestibulum nisi. Proin vestibulum massa mauris, sed tincidunt elit cursus rutrum. Aenean semper scelerisque sapien eu ultricies. Pellentesque tempus vulputate aliquam. Nulla eget nunc a ante suscipit ultricies. Morbi tempus sit amet turpis pulvinar iaculis.
+
+Nullam vel eros vel ligula vestibulum tincidunt vitae quis dui. Nullam nec elit malesuada, efficitur mi at, commodo neque. Sed sed tellus mauris. Integer eget ultricies risus. Phasellus a dui quis augue consequat suscipit. In vel euismod purus, non aliquam mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Proin venenatis aliquam risus ut malesuada. Sed interdum dolor et tempus volutpat. Duis tempor dui sit amet justo dapibus hendrerit. In commodo tortor vel erat hendrerit, vitae posuere sapien porta. Pellentesque cursus nunc in convallis dictum. Suspendisse fermentum tincidunt auctor. Suspendisse potenti. Nullam diam est, pharetra quis tellus nec, cursus efficitur purus. Nulla lorem justo, mattis id metus nec, tempus tincidunt felis. Phasellus dapibus ut tellus eu lacinia. Ut ornare, ipsum in vestibulum pharetra, mauris mauris porta risus, at elementum nunc nisi id ex. Pellentesque pellentesque leo eget odio egestas tempor. Quisque rutrum mauris a odio vestibulum imperdiet. Curabitur vel ullamcorper enim, non blandit tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent euismod felis vitae hendrerit tincidunt.'''
+  },
 ];
