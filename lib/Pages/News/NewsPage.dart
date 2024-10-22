@@ -1,6 +1,6 @@
-import 'package:app/Components/Header/AppBar.dart';
+import 'package:app/Components/Header/Header_Genral.dart';
 import 'package:app/Definitons/size_config.dart';
-import 'package:app/Widgets/News/News.dart';
+import 'package:app/Pages/News/News.dart';
 import 'package:flutter/material.dart';
 
 class NewsPage extends StatefulWidget {
@@ -18,7 +18,11 @@ class _NewsPageState extends State<NewsPage>
     AppSizes().init(context);
 
     return Scaffold(
-      appBar: Header(),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF7C72E5),
+        elevation: 0, // Tùy chọn để xóa bóng đổ
+        flexibleSpace: Info(check: true),
+      ),
       body: SafeArea(
         bottom: false,
         child: Stack(

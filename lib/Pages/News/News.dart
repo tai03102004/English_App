@@ -1,7 +1,8 @@
 // ignore: file_names
-import 'package:app/Pages/News/home_heading.dart';
-import 'package:app/Pages/News/home_slider.dart';
-import 'package:app/Pages/News/new_list.dart';
+import 'package:app/Definitons/size_config.dart';
+import 'package:app/Widgets/News/home_heading.dart';
+import 'package:app/Widgets/News/home_slider.dart';
+import 'package:app/Widgets/News/new_list.dart';
 import 'package:flutter/material.dart';
 
 class News extends StatelessWidget {
@@ -9,6 +10,7 @@ class News extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppSizes().init(context);
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(

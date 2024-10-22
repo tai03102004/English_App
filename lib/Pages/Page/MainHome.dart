@@ -1,9 +1,9 @@
 import 'package:app/Components/Footer/Menu.dart';
 import 'package:app/Definitons/size_config.dart';
 import 'package:app/Pages/AiBrain/AiBrainPage.dart';
-import 'package:app/Pages/Champion/ChampionPage.dart';
+import 'package:app/Pages/Ranking/RankingPage.dart';
 import 'package:app/Pages/Home/HomePage.dart';
-import 'package:app/Pages/NewsPage.dart';
+import 'package:app/Pages/News/NewsPage.dart';
 import 'package:app/Pages/Profile/UserProfilePage.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +43,7 @@ class _MainPageState extends State<MainPage> {
         },
         children: const [
           HomePage(),
-          ChampionPage(),
+          RankingPage(),
           AiBrainPage(),
           NewsPage(),
           UserProfilePage(),

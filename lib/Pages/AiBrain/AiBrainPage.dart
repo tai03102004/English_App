@@ -1,3 +1,4 @@
+import 'package:app/Components/Header/Header_Genral.dart';
 import 'package:app/Definitons/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,9 @@ class _AiBrainPage extends State<AiBrainPage>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AiBrainPage'),
+        backgroundColor: Color(0xFF7C72E5),
+        elevation: 0, // Tùy chọn để xóa bóng đổ
+        flexibleSpace: Info(check: true),
       ),
       body: Center(
         child: const Text("AiBrainPage"),

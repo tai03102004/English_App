@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 Map<String, dynamic> sectionColors = {
-  'header': LinearGradient(
-    colors: <Color>[Color(0xFF8CEF42), Color(0xFF58A700)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  ),
+  'header': Color(0xFFBF83FF),
   'transparent': Colors.transparent,
   'footer': Colors.black,
   'footer_icon': Colors.yellow[400],

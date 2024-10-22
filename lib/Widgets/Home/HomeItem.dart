@@ -1,7 +1,5 @@
-import 'package:app/Widgets/Home/Topics/Alphabet.dart';
-import 'package:app/Widgets/Home/Topics/Animals.dart';
-import 'package:app/Widgets/Home/Topics/In_the_city.dart';
-import 'package:app/Widgets/Home/Topics/Nature.dart';
+import 'package:app/Data/Home/data_home.dart';
+import 'package:app/Definitons/size_config.dart';
 import 'package:flutter/material.dart';
 
 class HomeItem extends StatefulWidget {
@@ -13,35 +11,9 @@ class HomeItem extends StatefulWidget {
 }
 
 class _HomeItem extends State<HomeItem> {
-  final List<String> entries = <String>[
-    'Animals',
-    'In the City',
-    'Alphabet',
-    'Nature',
-  ];
-  final List<Widget> pages = <Widget>[
-    Animals(),
-    Cities(),
-    Alphabet(),
-    Nature(),
-  ];
-  final List<String> images = <String>[
-    'assets/images/animal.png',
-    'assets/images/street.png',
-    'assets/images/alphabet.png',
-    'assets/images/park.png'
-  ];
-  final List<Color> colorCodes = <Color>[
-    Color(0xFFA1D7FF),
-    Color(0xFF6AFF5D),
-    Color(0xFFFFDA35),
-    Color(0xFFFF8D8D)
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.only(top: 75, bottom: 120),
+    return SliverList.builder(
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
@@ -119,20 +91,17 @@ class _HomeItem extends State<HomeItem> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
+                            border: Border.all(
+                              color: const Color.fromARGB(136, 255, 254, 254),
+                              width: 1.0,
+                            ),
                             color: colorCodes[index],
                           ),
                           width: 60,
-                          height: 18,
+                          height: AppSizes.blockSizeHorizontal * 6,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 "View",

@@ -1,6 +1,6 @@
 import 'package:app/Definitons/Theme/New_Color.dart';
 import 'package:app/Definitons/app_date_formatters.dart';
-import 'package:app/Widgets/News/singe_news_item_page.dart';
+import 'package:app/Pages/News/singe_news_item_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeSliderItem extends StatelessWidget {
