@@ -11,7 +11,7 @@ class Home_Header extends StatelessWidget {
     AppSizes().init(context);
     return SliverAppBar(
       pinned: true, // Bạn có thể bật hoặc tắt tùy theo nhu cầu
-      expandedHeight: AppSizes.blockSizeHorizontal * 95,
+      expandedHeight: AppSizes.blockSizeHorizontal * 101,
       backgroundColor: Color(0xFF7C72E5),
       flexibleSpace: FlexibleSpaceBar(
         background: Column(

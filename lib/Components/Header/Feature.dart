@@ -9,9 +9,9 @@ class Feature extends StatelessWidget {
     AppSizes().init(context);
 
     // Các giá trị thường dùng
-    const EdgeInsets containerPadding = EdgeInsets.all(16);
+    const EdgeInsets containerPadding = EdgeInsets.all(25);
     const EdgeInsets containerMargin = EdgeInsets.all(24);
-    const Color backgroundColor = Color(0xFFC4D0FB);
+    const Color backgroundColor = Color.fromARGB(139, 181, 177, 214);
 
     return Container(
       margin: containerMargin,
@@ -21,14 +21,39 @@ class Feature extends StatelessWidget {
         color: backgroundColor,
       ),
       child: Center(
-        child: Column(
+        child: Stack(
+          clipBehavior: Clip.none,
           children: [
-            _buildText("FEATURED", 16, FontWeight.w700),
-            _buildText("Take part in challenges", 18, FontWeight.bold),
-            _buildText("with friends or other players", 18, FontWeight.bold),
-            _buildText("players", 18, FontWeight.bold),
-            SizedBox(height: 15),
-            _FindFriendsButton(),
+            Positioned(
+              top: -10,
+              left: -30,
+              child: Image.asset(
+                "assets/images/1.png",
+                width: 50,
+              ),
+            ),
+            Positioned(
+              bottom: 25,
+              right: -10,
+              child: Image.asset(
+                "assets/images/2.png",
+                width: 50,
+              ),
+            ),
+            Column(
+              children: [
+                _buildText("FEATURED", 16, FontWeight.w700),
+                SizedBox(
+                  height: 10,
+                ),
+                _buildText("Take part in challenges", 18, FontWeight.bold),
+                _buildText(
+                    "with friends or other players", 18, FontWeight.bold),
+                _buildText("players", 18, FontWeight.bold),
+                SizedBox(height: 15),
+                _FindFriendsButton(),
+              ],
+            ),
           ],
         ),
       ),
