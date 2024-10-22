@@ -1,6 +1,6 @@
 import 'package:app/Data/News/dummy.dart';
 import 'package:app/Definitons/normalizePage.dart';
-import 'package:app/Pages/News/home_slider_item.dart';
+import 'package:app/Widgets/News/home_slider_item.dart';
 import 'package:app/helpers/DotsIndicator.dart';
 import 'package:flutter/material.dart';
 

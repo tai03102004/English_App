@@ -1,3 +1,4 @@
+import 'package:app/Components/Header/Header_Genral.dart';
 import 'package:app/Definitons/size_config.dart';
 import 'package:app/Widgets/Ranking/Leader_board.dart';
 import 'package:app/Widgets/Ranking/announce_user.dart';
@@ -5,31 +6,32 @@ import 'package:app/Widgets/Ranking/ranking_list.dart';
 import 'package:app/Widgets/Ranking/timer_ranking.dart';
 import 'package:flutter/material.dart';
 
-class ChampionPage extends StatefulWidget {
-  const ChampionPage({super.key});
+class RankingPage extends StatefulWidget {
+  const RankingPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
   _ChampionPage createState() => _ChampionPage();
 }
 
-class _ChampionPage extends State<ChampionPage>
+class _ChampionPage extends State<RankingPage>
     with SingleTickerProviderStateMixin {
   int currentIndex = 0;
   bool check = true;
-
   @override
   Widget build(BuildContext context) {
     AppSizes().init(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ranking"),
+        backgroundColor: Color(0xFF7C72E5),
+        elevation: 0,
+        flexibleSpace: Info(check: false),
         actions: [
           PopupMenuButton<int>(
             icon: Icon(
               Icons.more_vert,
-              size: 25,
+              size: 35,
             ),
             offset: Offset(0, 40),
             onSelected: (value) {

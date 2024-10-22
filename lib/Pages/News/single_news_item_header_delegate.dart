@@ -1,7 +1,7 @@
 import 'package:app/Definitons/Theme/New_Color.dart';
 import 'package:app/Definitons/app_date_formatters.dart';
-import 'package:app/Pages/News/app_rounded_button.dart';
-import 'package:app/Pages/News/app_rounded_button_blur.dart';
+import 'package:app/Widgets/News/app_rounded_button.dart';
+import 'package:app/Widgets/News/app_rounded_button_blur.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';

@@ -1,4 +1,4 @@
-import 'package:app/Pages/News/app_rounded_button.dart';
+import 'package:app/Widgets/News/app_rounded_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeTopButton extends StatelessWidget {

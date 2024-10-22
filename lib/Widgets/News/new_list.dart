@@ -1,5 +1,5 @@
 import 'package:app/Data/News/dummy.dart';
-import 'package:app/Pages/News/new_list_item.dart';
+import 'package:app/Widgets/News/new_list_item.dart';
 import 'package:flutter/material.dart';
 
 class NewsList extends StatelessWidget {
