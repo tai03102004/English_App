@@ -27,6 +27,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  sqflite: ^2.0.0+4
 
   flutter_lints: ^2.0.0
 
@@ -36,8 +37,12 @@ flutter:
   assets:
     - assets/
     - assets/images/
+<<<<<<< Updated upstream
     - assets/images/raster/
     - assets/images/users/
+=======
+    - lib/sources/
+>>>>>>> Stashed changes
 
   fonts:
     - family: Lato
