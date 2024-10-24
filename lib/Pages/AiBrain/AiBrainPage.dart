@@ -22,7 +22,10 @@ class _AiBrainPage extends State<AiBrainPage>
       appBar: AppBar(
         backgroundColor: Color(0xFF7C72E5),
         elevation: 0, // Tùy chọn để xóa bóng đổ
-        flexibleSpace: Info(check: true),
+        flexibleSpace: Info(
+          check: true,
+          check_name: true,
+        ),
       ),
       body: Center(
         child: const Text("AiBrainPage"),

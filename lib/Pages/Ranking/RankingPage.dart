@@ -26,7 +26,10 @@ class _ChampionPage extends State<RankingPage>
       appBar: AppBar(
         backgroundColor: Color(0xFF7C72E5),
         elevation: 0,
-        flexibleSpace: Info(check: false),
+        flexibleSpace: Info(
+          check: false,
+          check_name: true,
+        ),
         actions: [
           PopupMenuButton<int>(
             icon: Icon(
@@ -65,7 +68,7 @@ class _ChampionPage extends State<RankingPage>
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            TimerRanking(),
+            TimerRanking(tasks: ["Weekly", "Monthly"]),
             if (check) AnnounceUser(),
             if (check) LeaderboardWidget(),
             RankingList(

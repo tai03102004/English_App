@@ -1,5 +1,5 @@
+import 'package:app/Middlewares/Circle_Percent.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class Recent extends StatelessWidget {
   const Recent({super.key});
@@ -46,21 +46,13 @@ class Recent extends StatelessWidget {
             ],
           ),
           Spacer(),
-          CircularPercentIndicator(
+          CirclePercent(
+            text: '65%',
             radius: 25.0,
             lineWidth: 12.0,
-            animation: true,
-            percent: 0.65, // 65%
-            center: Text(
-              "65%",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14.0,
-              ),
-            ),
-            circularStrokeCap: CircularStrokeCap.round,
-            progressColor: Colors.pinkAccent,
-            backgroundColor: Colors.pink.shade100,
+            percent: 0.65,
+            fontSize: 14.0,
+            check: false,
           ),
         ],
       ),
