@@ -23,6 +23,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.3.2
   percent_indicator: ^4.2.3
+  fl_chart: ^0.69.0
 
 dev_dependencies:
   flutter_test:
@@ -37,12 +38,10 @@ flutter:
   assets:
     - assets/
     - assets/images/
-<<<<<<< Updated upstream
     - assets/images/raster/
     - assets/images/users/
-=======
     - lib/sources/
->>>>>>> Stashed changes
+    - assets/images/profiles/
 
   fonts:
     - family: Lato
