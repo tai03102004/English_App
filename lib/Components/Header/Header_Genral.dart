@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class Info extends StatelessWidget {
   final bool check;
-  const Info({super.key, required this.check});
+  final bool check_name;
+  const Info({super.key, required this.check, required this.check_name});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class Info extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    "Madelyn Dias",
+                    check_name ? "Madelyn Dias" : "Your Profile",
                     style: TextStyle(
                       fontSize: 22,
                       fontFamily: "Rubik",

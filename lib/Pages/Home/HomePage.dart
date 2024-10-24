@@ -23,7 +23,10 @@ class _HomePageState extends State<HomePage>
       appBar: AppBar(
         backgroundColor: Color(0xFF7C72E5),
         elevation: 0, // Tùy chọn để xóa bóng đổ
-        flexibleSpace: Info(check: true),
+        flexibleSpace: Info(
+          check: true,
+          check_name: true,
+        ),
       ),
       body: Container(
         color: const Color(0xFFF1F1F1),
