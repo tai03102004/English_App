@@ -1,41 +1,22 @@
+import 'package:app/Widgets/Auth/Login.dart';
 import 'package:flutter/material.dart';
-import '../../Widgets/Auth/Login.dart';
+import 'Login.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _Login createState() => _Login();
-}
-
-class _Login extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>(); // Trạng thái form nhập vào
-  String _username = '';
-  String _password = '';
-
-  void _login() {
-    if (_formKey.currentState?.validate() ?? false) {   // Kiểm tra tính hợp lệ của form
-      Navigator.pushReplacementNamed(context, '/home');   // Đăng nhập thành công chuyển sang Home
-    }
-  }
-
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LoginForm(
-        formKey: _formKey,
-        username: _username,
-        password: _password,
-        onUsernameChanged: (value) {
-          setState(() {
-            _username = value;
-          });
-        },
-        onPasswordChanged: (value) {
-          setState(() {
-            _password = value;
-          });
-        },
-        onLoginPressed: _login,
+      appBar: AppBar(
+        title: Text('Sign In'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Handle back button press here
+            Navigator.pop(context);
+          },
+        ),
       ),
+      body: Login(),  // Use the Login widget from Login.dart
     );
   }
 }

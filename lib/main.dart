@@ -1,3 +1,4 @@
+import 'package:app/Pages/Auth/GetStarted.dart';
 import 'package:app/Pages/Auth/LoginPage.dart';
 import 'package:app/Pages/MainHome.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(),
+        '/': (context) => GetStarted(),
         '/home': (context) => MainPage(),
       },
       debugShowCheckedModeBanner: false,
