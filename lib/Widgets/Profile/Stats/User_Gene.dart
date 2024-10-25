@@ -19,9 +19,11 @@ class User_Gene extends StatelessWidget {
             alignment: Alignment.topCenter,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: AppSizes.blockSizeHorizontal * 2,
-                    vertical: AppSizes.blockSizeVertical * 10),
+                padding: EdgeInsets.only(
+                  left: AppSizes.blockSizeHorizontal * 2,
+                  right: AppSizes.blockSizeHorizontal * 2,
+                  top: AppSizes.blockSizeVertical * 4.6,
+                ),
                 child: Container(
                   height: AppSizes.screenHeight * 1.32,
                   decoration: BoxDecoration(
@@ -31,7 +33,7 @@ class User_Gene extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 50,
+                top: 10,
                 child: Column(
                   children: [
                     CircleAvatar(

@@ -43,6 +43,7 @@ flutter:
     - assets/images/users/
     - lib/sources/
     - assets/images/profiles/
+    - assets/images/home/
 
   fonts:
     - family: Lato
