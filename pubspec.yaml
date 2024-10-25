@@ -38,6 +38,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/home/
     - assets/images/raster/
     - assets/images/users/
     - lib/sources/
