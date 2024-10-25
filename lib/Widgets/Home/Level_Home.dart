@@ -22,7 +22,7 @@ class _LevelHome extends State<LevelHome> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/goal.png",
+                  "assets/images/home/goal.png",
                   width: 24,
                   height: 24,
                 ),

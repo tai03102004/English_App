@@ -26,7 +26,7 @@ class Info extends StatelessWidget {
                   Row(
                     children: [
                       Image.asset(
-                        "assets/images/morning.png",
+                        "assets/images/home/morning.png",
                         width: 20,
                       ),
                       SizedBox(

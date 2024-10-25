@@ -17,10 +17,10 @@ final List<Widget> pages = <Widget>[
   Nature(),
 ];
 final List<String> images = <String>[
-  'assets/images/animal.png',
-  'assets/images/street.png',
-  'assets/images/alphabet.png',
-  'assets/images/park.png'
+  'assets/images/home/animal.png',
+  'assets/images/home/street.png',
+  'assets/images/home/alphabet.png',
+  'assets/images/home/park.png'
 ];
 final List<Color> colorCodes = <Color>[
   Color(0xFFA1D7FF),
