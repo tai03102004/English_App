@@ -30,7 +30,7 @@ class Recent extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Image.asset("assets/images/headphone.png"),
+                  Image.asset("assets/images/home/headphone.png"),
                   SizedBox(width: 4),
                   Text(
                     "A Basic Music Quiz",

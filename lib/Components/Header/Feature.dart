@@ -28,7 +28,7 @@ class Feature extends StatelessWidget {
               top: -10,
               left: -30,
               child: Image.asset(
-                "assets/images/1.png",
+                "assets/images/home/1.png",
                 width: 50,
               ),
             ),
@@ -36,7 +36,7 @@ class Feature extends StatelessWidget {
               bottom: 25,
               right: -10,
               child: Image.asset(
-                "assets/images/2.png",
+                "assets/images/home/2.png",
                 width: 50,
               ),
             ),
@@ -86,7 +86,7 @@ class _FindFriendsButton extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(
-            "assets/images/Icon.png",
+            "assets/images/home/Icon.png",
             width: 20,
           ),
           SizedBox(width: 10),

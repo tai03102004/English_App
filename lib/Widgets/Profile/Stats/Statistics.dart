@@ -14,6 +14,8 @@ class _StatisticsState extends State<Statistics> {
   // Đặt Stats làm widget mặc định
   Widget displayedWidget = const Stats();
 
+  String selecTab = "Badge";
+
   @override
   void initState() {
     super.initState();
@@ -36,25 +38,52 @@ class _StatisticsState extends State<Statistics> {
                 onTap: () {
                   setState(() {
                     displayedWidget = const Text("Hello");
+                    selecTab = "Badge";
                   });
                 },
-                child: const Text("Badge"),
+                child: Text(
+                  "Badge",
+                  style: TextStyle(
+                    fontWeight: selecTab == 'Badge'
+                        ? FontWeight.bold
+                        : FontWeight.normal,
+                    fontSize: selecTab == 'Badge' ? 16 : 14,
+                  ),
+                ),
               ),
               InkWell(
                 onTap: () {
                   setState(() {
                     displayedWidget = const Stats();
+                    selecTab = "Stats";
                   });
                 },
-                child: const Text("Stats"),
+                child: Text(
+                  "Stats",
+                  style: TextStyle(
+                    fontWeight: selecTab == 'Stats'
+                        ? FontWeight.bold
+                        : FontWeight.normal,
+                    fontSize: selecTab == 'Stats' ? 16 : 14,
+                  ),
+                ),
               ),
               InkWell(
                 onTap: () {
                   setState(() {
                     displayedWidget = const Text("Details shown");
+                    selecTab = "Details";
                   });
                 },
-                child: const Text("Details"),
+                child: Text(
+                  "Details",
+                  style: TextStyle(
+                    fontWeight: selecTab == 'Details'
+                        ? FontWeight.bold
+                        : FontWeight.normal,
+                    fontSize: selecTab == 'Details' ? 16 : 14,
+                  ),
+                ),
               ),
             ],
           ),
