@@ -19,8 +19,7 @@ class _StatisticsState extends State<Statistics> {
   @override
   void initState() {
     super.initState();
-    // Mặc định hiển thị trang thứ 2 (Stats)
-    displayedWidget = const Stats();
+    displayedWidget = const Text("Hello");
   }
 
   @override

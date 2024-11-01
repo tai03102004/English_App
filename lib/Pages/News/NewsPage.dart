@@ -25,6 +25,7 @@ class _NewsPageState extends State<NewsPage>
           check: true,
           check_name: true,
         ),
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         bottom: false,

@@ -27,6 +27,7 @@ class _UserProfilePage extends State<UserProfilePage>
           check: false,
           check_name: false,
         ),
+        automaticallyImplyLeading: false,
         actions: [
           PopupMenuButton<int>(
             icon: Icon(
