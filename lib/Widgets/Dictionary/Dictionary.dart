@@ -28,47 +28,11 @@ class Dictionary extends StatefulWidget {
 }
 
 class _DictionaryState extends State<Dictionary> {
-  double xPosition = 100;
-  double yPosition = 100;
+
   @override
   Widget build(BuildContext context) {
 
-    return Stack(
-      children: [
-        Positioned(
-          left: xPosition,
-          top: yPosition,
-          child: GestureDetector(
-            onPanUpdate: (details) {
-              // Update the position of the icon based on user drag
-              setState(() {
-                xPosition += details.delta.dx;
-                yPosition += details.delta.dy;
-              });
-            },
-            child: GestureDetector(
-              onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchPage()));
-              },
-              child: Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.green,
-                ),
-                child: const Icon(
-                  Icons.search,
-                  size: 30,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-      //SearchPage();
+    return SearchPage();
   }
 }
 
