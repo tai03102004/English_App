@@ -74,7 +74,7 @@ class NewsListItem extends StatelessWidget {
                   ),
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: TextStyle(fontSize: 20),
                   ),
                   const SizedBox(
                     height: 10,
@@ -92,7 +92,7 @@ class NewsListItem extends StatelessWidget {
                       ),
                       Text(
                         '$author · ${AppDateFormatters.mdY(date)}',
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(fontSize: 10),
                       ),
                     ],
                   ),
