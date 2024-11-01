@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage>
         backgroundColor: Color(0xFF7C72E5),
         elevation: 0, // Tùy chọn để xóa bóng đổ
         flexibleSpace: Info(check: true),
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         color: const Color(0xFFF1F1F1),

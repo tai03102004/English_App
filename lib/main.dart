@@ -1,9 +1,11 @@
 import 'package:app/Pages/Auth/GetStarted.dart';
 import 'package:app/Pages/Auth/LoginPage.dart';
-import 'package:app/Pages/MainHome.dart';
+import 'package:app/Pages/Page/MainHome.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'Pages/Page/MainHome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,4 +1,5 @@
 import 'package:app/Pages/Auth/LoginPage.dart';
+import 'package:app/Pages/Auth/SignUpPage.dart';
 import 'package:flutter/material.dart';
 
 class GetStarted extends StatelessWidget {
@@ -11,9 +12,8 @@ class GetStarted extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
             Stack(
-              alignment: Alignment.center,
+              alignment: Alignment.bottomCenter,
               children: [
                 Image.asset(
                   'assets/images/capylogo.png',
@@ -31,20 +31,22 @@ class GetStarted extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Spacer(),
             Column(
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
+                    backgroundColor: Color(0xFFD3B591),
                     padding: EdgeInsets.symmetric(vertical: 16.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
+                      side: BorderSide(
+                        color: Color(0xFF917C63),
+                        width: 2,
+                      ),
                     ),
                     minimumSize: Size(double.infinity, 50),
                   ),
                   onPressed: () {
-                    // Điều hướng đến màn hình khác
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => LoginPage()),
@@ -52,34 +54,35 @@ class GetStarted extends StatelessWidget {
                   },
                   child: Text(
                     'GET STARTED',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFFFFFFFF),
+                    ),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    side: BorderSide(color: Colors.green),
+                    side: BorderSide(color: Color(0xFF917C63)),
                     minimumSize: Size(double.infinity, 50), // full width button
                   ),
                   onPressed: () {
-                    // Điều hướng đến màn hình đăng nhập
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()),
                     );
                   },
                   child: Text(
                     'SIGN UP',
-                    style: TextStyle(fontSize: 18, color: Colors.green),
+                    style: TextStyle(fontSize: 18, color: Color(0xFFD3B591)),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 30),
           ],
         ),
       ),
