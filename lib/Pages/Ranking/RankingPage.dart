@@ -30,6 +30,7 @@ class _ChampionPage extends State<RankingPage>
           check: false,
           check_name: true,
         ),
+        automaticallyImplyLeading: false,
         actions: [
           PopupMenuButton<int>(
             icon: Icon(

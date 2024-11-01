@@ -26,6 +26,7 @@ class _AiBrainPage extends State<AiBrainPage>
           check: true,
           check_name: true,
         ),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: const Text("AiBrainPage"),

@@ -21,7 +21,7 @@ class Result extends StatelessWidget {
           Expanded(
             flex: 1,
             child: StatItem(
-                image: "assets/images/users/star.png",
+                image: "assets/images/profiles/star.png",
                 title: "POINTS",
                 value: "590"),
           ),
@@ -34,7 +34,7 @@ class Result extends StatelessWidget {
           Expanded(
             flex: 1,
             child: StatItem(
-                image: "assets/images/users/world.png",
+                image: "assets/images/profiles/world.png",
                 title: "WORLD RANK",
                 value: "#1,438"),
           ),
@@ -47,7 +47,7 @@ class Result extends StatelessWidget {
           Expanded(
             flex: 1,
             child: StatItem(
-                image: "assets/images/users/rank.png",
+                image: "assets/images/profiles/rank.png",
                 title: "LOCAL RANK",
                 value: "#56"),
           ),

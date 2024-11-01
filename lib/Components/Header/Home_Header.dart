@@ -13,6 +13,7 @@ class Home_Header extends StatelessWidget {
       pinned: true, // Bạn có thể bật hoặc tắt tùy theo nhu cầu
       expandedHeight: AppSizes.blockSizeHorizontal * 101,
       backgroundColor: Color(0xFF7C72E5),
+      automaticallyImplyLeading: false,
       flexibleSpace: FlexibleSpaceBar(
         background: Column(
           children: [
