@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage>
           check: true,
           check_name: true,
         ),
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         color: const Color(0xFFF1F1F1),
