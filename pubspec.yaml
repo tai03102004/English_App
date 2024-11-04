@@ -24,6 +24,10 @@ dependencies:
   shared_preferences: ^2.3.2
   percent_indicator: ^4.2.3
   fl_chart: ^0.69.0
+  flutter_tts: ^4.0.2
+  permission_handler: ^11.3.1
+  audioplayers: ^6.1.0
+  speech_to_text: ^7.0.0
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +45,9 @@ flutter:
     - assets/images/users/
     - assets/images/profiles/
     - assets/images/home/
+    - assets/svg/
+    - assets/audios/
+    - assets/audios/ipa/
 
   fonts:
     - family: Lato
