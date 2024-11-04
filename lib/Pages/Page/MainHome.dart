@@ -1,6 +1,6 @@
 import 'package:app/Components/Footer/Menu.dart';
 import 'package:app/Definitons/size_config.dart';
-import 'package:app/Pages/AiBrain/AiBrainPage.dart';
+import 'package:app/Pages/Pronunciation/Pronunciation_Topic.dart';
 import 'package:app/Pages/Ranking/RankingPage.dart';
 import 'package:app/Pages/Home/HomePage.dart';
 import 'package:app/Pages/News/NewsPage.dart';
@@ -41,12 +41,12 @@ class _MainPageState extends State<MainPage> {
             _pageIndex = value;
           });
         },
-        children: const [
-          HomePage(),
-          RankingPage(),
-          AiBrainPage(),
-          NewsPage(),
-          UserProfilePage(),
+        children: [
+          const HomePage(),
+          Pronunciation_Topic(),
+          const NewsPage(),
+          const RankingPage(),
+          const UserProfilePage(),
         ],
       ),
       bottomNavigationBar: Padding(
