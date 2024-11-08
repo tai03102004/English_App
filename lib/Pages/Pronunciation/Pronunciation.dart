@@ -1,7 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:app/Pages/Pronunciation/Pronunciation_Practice.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 class Pronunciation extends StatelessWidget {
   final String audioPath;
@@ -10,23 +9,20 @@ class Pronunciation extends StatelessWidget {
   final String tip2;
   final String tip3;
 
+  final List<String> words;
+
   // Constructor nhận audioPath và title
   Pronunciation(
       {required this.audioPath,
       required this.title,
       required this.tip1,
       required this.tip2,
-      required this.tip3});
+      required this.tip3,
+      required this.words});
 
   @override
   Widget build(BuildContext context) {
     final AudioPlayer audioPlayer = AudioPlayer();
-    final FlutterTts flutterTts = FlutterTts();
-    Future<void> speakText(String text) async {
-      await flutterTts.setLanguage("en-US");
-      await flutterTts.setSpeechRate(0.4);
-      await flutterTts.speak(text);
-    }
 
     return Scaffold(
       appBar: AppBar(title: Text(title)),
@@ -94,12 +90,13 @@ class Pronunciation extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PronunciationPracticePage(),
+                    builder: (context) =>
+                        PronunciationPracticePage(words: words),
                   ),
                 );
               },
               child: Text(
-                "Practice now",
+                "Luyện tập ngay",
                 style: TextStyle(fontSize: 18),
               ),
             ),

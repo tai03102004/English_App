@@ -49,10 +49,10 @@ class _HomeSliderState extends State<HomeSlider> {
                 imageAssetPath: newsrItems[i]['imageAssetPath']!,
                 category: newsrItems[i]['category']!,
                 title: newsrItems[i]['title']!,
-                author: newsrItems[i]['author']!,
-                date: DateTime.parse(newsrItems[i]['date']!),
+                // author: newsrItems[i]['author']!,
+                // date: DateTime.parse(newsrItems[i]['date']!),
                 content: newsrItems[i]['content']!,
-                authorImageAssetPath: newsrItems[i]['authorImageAssetPath']!,
+                // authorImageAssetPath: newsrItems[i]['authorImageAssetPath']!,
               );
             },
           ),
@@ -61,8 +61,7 @@ class _HomeSliderState extends State<HomeSlider> {
           height: 10,
         ),
         DotsIndicator(
-            currentIndex: normalizePageIndex(_pageIndex),
-            totalDots: newsrItems.length < 8 ? newsrItems.length : 8),
+            currentIndex: normalizePageIndex(_pageIndex), totalDots: 8),
       ],
     ));
   }

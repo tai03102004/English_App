@@ -1,5 +1,5 @@
 import 'package:app/Definitons/Theme/New_Color.dart';
-import 'package:app/Definitons/app_date_formatters.dart';
+// import 'package:app/Definitons/app_date_formatters.dart';
 import 'package:app/Widgets/News/app_rounded_button.dart';
 import 'package:app/Widgets/News/app_rounded_button_blur.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,7 +10,7 @@ class SingleNewsItemHeaderDelegate extends SliverPersistentHeaderDelegate {
   final String title;
   final String category;
   final String imageAssetPath;
-  final DateTime date;
+  // final DateTime date;
   final double topPadding;
 
   final Function(double value) borderRadiusAnimationValue;
@@ -25,7 +25,7 @@ class SingleNewsItemHeaderDelegate extends SliverPersistentHeaderDelegate {
     required this.title,
     required this.category,
     required this.imageAssetPath,
-    required this.date,
+    // required this.date,
     required this.maxExtent,
     required this.minExtent,
     required this.topPadding,
@@ -64,7 +64,7 @@ class SingleNewsItemHeaderDelegate extends SliverPersistentHeaderDelegate {
       children: [
         Image.asset(
           imageAssetPath,
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
         Positioned(
           bottom: 0,
@@ -100,7 +100,9 @@ class SingleNewsItemHeaderDelegate extends SliverPersistentHeaderDelegate {
                         ? Chip(
                             label: Text(
                               category,
-                              style: const TextStyle(color: AppColors.white),
+                              style: const TextStyle(
+                                  color: AppColors.white,
+                                  fontWeight: FontWeight.bold),
                             ),
                             backgroundColor: Theme.of(context).primaryColor,
                           )
@@ -112,32 +114,30 @@ class SingleNewsItemHeaderDelegate extends SliverPersistentHeaderDelegate {
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width - 40,
-                    child: Text(
-                      title,
-                      style:
-                          Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                color: AppColors.white,
-                              ),
-                    ),
+                    child: Text(title,
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
                   ),
                   AnimatedContainer(
                     duration: animationDuration,
                     height: showCategoryDate ? 10 : 0,
                   ),
-                  AnimatedSwitcher(
-                    duration: animationDuration,
-                    child: showCategoryDate
-                        ? Text(
-                            AppDateFormatters.mdY(date),
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
-                                  color: AppColors.white,
-                                ),
-                          )
-                        : const SizedBox.shrink(),
-                  )
+                  // AnimatedSwitcher(
+                  //   duration: animationDuration,
+                  //   child: showCategoryDate
+                  //       ? Text(
+                  //           AppDateFormatters.mdY(date),
+                  //           style: Theme.of(context)
+                  //               .textTheme
+                  //               .titleMedium
+                  //               ?.copyWith(
+                  //                 color: AppColors.white,
+                  //               ),
+                  //         )
+                  //       : const SizedBox.shrink(),
+                  // )
                 ],
               ),
             ),
@@ -148,7 +148,8 @@ class SingleNewsItemHeaderDelegate extends SliverPersistentHeaderDelegate {
           child: AnimatedContainer(
             duration: animationDuration,
             height: 56 + topPadding,
-            color: AppColors.white.withOpacity(1 - topBarAnimationValue),
+            color: const Color.fromARGB(255, 247, 221, 221)
+                .withOpacity(1 - topBarAnimationValue),
             width: screenWidth,
             child: Column(
               children: [

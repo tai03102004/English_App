@@ -1,4 +1,3 @@
-import 'package:app/Definitons/Theme/New_Color.dart';
 import 'package:flutter/material.dart';
 
 class AppRoundedButton extends StatelessWidget {
@@ -10,7 +9,7 @@ class AppRoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.athenasGray,
+      color: const Color.fromARGB(255, 240, 233, 255),
       borderRadius: BorderRadius.circular(56),
       child: InkWell(
           onTap: onTap,
