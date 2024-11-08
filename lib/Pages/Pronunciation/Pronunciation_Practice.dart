@@ -1,3 +1,4 @@
+import 'package:app/Pages/Pronunciation/PronunciationProgress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -5,7 +6,8 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 class PronunciationPracticePage extends StatefulWidget {
-  PronunciationPracticePage();
+  final List<String> words;
+  PronunciationPracticePage({required this.words});
   @override
   // ignore: library_private_types_in_public_api
   _PronunciationPracticePageState createState() =>
@@ -13,13 +15,10 @@ class PronunciationPracticePage extends StatefulWidget {
 }
 
 class _PronunciationPracticePageState extends State<PronunciationPracticePage> {
-  final List<String> words = [
-    "hello",
-    "world",
-    "flutter",
-    "development",
-    "practice"
-  ];
+  List<String> get words => widget.words;
+
+  int completedSentences = 0;
+
   final FlutterTts flutterTts = FlutterTts();
   final SpeechToText _speechToText = SpeechToText();
 
@@ -73,6 +72,9 @@ class _PronunciationPracticePageState extends State<PronunciationPracticePage> {
         confidence > 0.8) {
       _showSnackBar("Phát âm chính xác!");
       _nextWord();
+      setState(() {
+        completedSentences++;
+      });
     } else {
       _showSnackBar("Phát âm chưa chính xác. Hãy thử lại!");
     }
@@ -98,6 +100,8 @@ class _PronunciationPracticePageState extends State<PronunciationPracticePage> {
 
   @override
   Widget build(BuildContext context) {
+    int totalSentences = words.length;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Luyện phát âm'),
@@ -107,6 +111,13 @@ class _PronunciationPracticePageState extends State<PronunciationPracticePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            PronunciationProgress(
+              completedSentences: completedSentences,
+              totalSentences: totalSentences,
+            ),
+            SizedBox(
+              height: 30,
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

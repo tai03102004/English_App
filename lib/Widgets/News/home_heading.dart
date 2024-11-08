@@ -14,10 +14,11 @@ class HomeHeading extends StatelessWidget {
       sliver: SliverToBoxAdapter(
         child: Row(
           children: [
-            Text(
-              title,
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
+            Text(title,
+                style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: const Color.fromARGB(255, 54, 127, 244))),
             const Spacer(),
             if (traling != null) traling!,
           ],

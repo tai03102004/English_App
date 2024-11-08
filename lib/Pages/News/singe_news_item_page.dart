@@ -5,21 +5,21 @@ import 'package:flutter/material.dart';
 class SingleNewsItemPage extends StatefulWidget {
   final String title;
   final String content;
-  final String author;
+  // final String author;
   final String category;
-  final String authorImageAssetPath;
+  // final String authorImageAssetPath;
   final String imageAssetPath;
-  final DateTime date;
+  // final DateTime date;
 
   const SingleNewsItemPage({
     super.key,
     required this.title,
     required this.content,
-    required this.author,
+    // required this.author,
     required this.category,
-    required this.authorImageAssetPath,
+    // required this.authorImageAssetPath,
     required this.imageAssetPath,
-    required this.date,
+    // required this.date,
   });
 
   @override
@@ -34,7 +34,6 @@ class _SingleNewsItemPageState extends State<SingleNewsItemPage> {
     final topPadding = MediaQuery.of(context).padding.top;
     final maxScreenSizeHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: AppColors.black,
       body: CustomScrollView(
         slivers: [
           SliverPersistentHeader(
@@ -48,7 +47,7 @@ class _SingleNewsItemPageState extends State<SingleNewsItemPage> {
               },
               title: widget.title,
               category: widget.category,
-              date: widget.date,
+              // date: widget.date,
               imageAssetPath: widget.imageAssetPath,
               minExtent: topPadding + 56,
               maxExtent: maxScreenSizeHeight / 2,
@@ -68,14 +67,18 @@ class _SingleNewsItemPageState extends State<SingleNewsItemPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Text(
+                  //   widget.author,
+                  //   style: Theme.of(context).textTheme.headlineSmall,
+                  // ),
+
                   Text(
-                    widget.author,
-                    style: Theme.of(context).textTheme.headlineSmall,
+                    widget.content,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  Text(widget.content),
                 ],
               ),
             ),

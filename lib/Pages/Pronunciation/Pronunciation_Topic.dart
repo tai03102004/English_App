@@ -7,18 +7,46 @@ class Pronunciation_Topic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Pronunciation Practice")),
+      appBar: AppBar(title: Text("IPA")),
       body: ListView.builder(
-        itemCount: 22,
+        itemCount: ipaSounds.length,
         itemBuilder: (context, index) {
           String audioPath = '/audios/ipa/${index + 1}.mp3';
           String title = ipaSounds[index].symbol;
           String tip1 = ipaSounds[index].description;
           String tip2 = ipaSounds[index].mouthPosition;
           String tip3 = ipaSounds[index].tonguePosition;
+          List<String> words = ipaSounds[index].examples;
 
           return ListTile(
-            title: Text("Practice ${index + 1}:  $title"),
+            title: Row(
+              children: [
+                Container(
+                  width: 35,
+                  height: 35,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 53, 157, 195),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Text(
+                      "${index + 1}",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Âm:  $title",
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -29,6 +57,7 @@ class Pronunciation_Topic extends StatelessWidget {
                     tip1: tip1,
                     tip2: tip2,
                     tip3: tip3,
+                    words: words,
                   ),
                 ),
               );

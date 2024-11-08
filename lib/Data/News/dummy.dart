@@ -1,110 +1,244 @@
 const newsrItems = [
   {
-    'imageAssetPath': 'assets/images/raster/news_1.jpeg',
-    'category': 'Sports',
-    'author': 'McKindey',
-    'authorImageAssetPath': 'assets/images/raster/news_author_1.jpeg',
-    'date': '2023-02-27',
-    'title': 'Alexander wears modified helmetin road races',
+    'imageAssetPath': 'assets/images/raster/fox_grapes.jpg',
+    'category': 'Story',
+    // 'author': 'McKindey',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_1.jpeg',
+    // 'date': '2023-02-27',
+    'title': 'The Fox and the grapes',
     'content':
-        '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sem massa, finibus nec ligula nec, dictum consequat ex. Nulla rutrum feugiat erat, vitae iaculis lacus commodo aliquam. Integer metus metus, mattis at fringilla eu, consequat eu nibh. Fusce neque metus, porta id ligula eu, pellentesque mollis mi. Vivamus commodo sagittis massa, a pellentesque dui ullamcorper eget. Mauris eget iaculis mauris. Nullam hendrerit feugiat neque eget aliquam. Aliquam sit amet tempor massa. Aliquam non tellus laoreet, rutrum nisi id, tempor lectus. Vivamus posuere maximus viverra. Vivamus sed velit non metus tempor finibus. Vestibulum at viverra tortor. Pellentesque porta erat vel lacus porta, quis consequat quam pharetra. Mauris in vehicula diam.
+        '''One day, a fox became very hungry as he went to search for some food. He searched high and low, but couldn’t find something that he could eat.
 
-              Integer sit amet tellus maximus ex ornare pharetra nec vel massa. Suspendisse dolor leo, rutrum non rhoncus et, placerat eu purus. Nullam id ex dignissim, venenatis sem quis, pretium lacus. In libero ipsum, hendrerit in hendrerit condimentum, tincidunt id felis. Aliquam tristique tellus non auctor mollis. Aliquam erat volutpat. Quisque eleifend mauris quis ipsum blandit viverra. Aliquam finibus volutpat elit varius aliquam. Sed hendrerit neque ut tortor ultricies placerat. Nulla elementum nibh eget vestibulum condimentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+Finally, as his stomach rumbled, he stumbled upon a farmer’s wall. At the top of the wall, he saw the biggest, juiciest grapes he’d ever seen. They had a rich, purple color, telling the fox they were ready to be eaten.
 
-              Aliquam consectetur urna euismod ex interdum finibus. Sed id porttitor sapien. Vivamus viverra eu orci nec ultrices. Duis id diam sagittis, fringilla turpis ac, elementum urna. Phasellus dapibus tellus purus, eu semper elit porttitor eu. Aliquam dictum pretium rutrum. Nulla commodo venenatis pulvinar. Vivamus maximus mi vel ultrices ultrices. Etiam gravida risus nec sem ullamcorper, eget dapibus turpis fermentum. Aliquam erat volutpat. Sed elementum orci sed enim tempus hendrerit. Mauris laoreet venenatis eros ut vestibulum.
+To reach the grapes, the fox had to jump high in the air. As he jumped, he opened his mouth to catch the grapes, but he missed. The fox tried again but missed yet again.
 
-              Aliquam erat volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris malesuada fermentum urna, a dignissim est pharetra nec. Ut lacinia, purus at sodales bibendum, nisl leo dignissim sapien, eget convallis magna nisl a magna. Vestibulum aliquam nulla at eros tincidunt ultrices. Morbi at interdum neque. Sed pretium lobortis libero, sed scelerisque ipsum bibendum consequat. Cras sollicitudin convallis erat, a mattis mi pulvinar in. Ut pharetra lectus lacus, tincidunt lacinia velit consequat nec. Donec rhoncus sit amet lacus id fermentum. Duis cursus sit amet ipsum quis molestie. Nullam tincidunt lacinia enim, feugiat lobortis lorem aliquet vitae. Donec tincidunt tortor leo. Aliquam ultricies eleifend tortor a malesuada. Maecenas varius felis eu ligula accumsan vulputate.
+He tried a few more times but kept failing.
 
-              Vivamus eu iaculis ligula, eget fringilla nisl. Aenean quam urna, varius id massa et, euismod malesuada nisi. Sed lobortis leo neque, eu gravida ipsum pretium ac. Sed urna lacus, fringilla eu placerat vel, tempor eu ante. Maecenas fringilla egestas arcu nec hendrerit. Mauris neque nunc, egestas sit amet diam nec, suscipit elementum nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque in magna et felis aliquet congue. Fusce ut sagittis tellus, vel interdum leo. Nullam ex ante, consectetur in elit quis, facilisis vehicula quam. Nam eget vulputate velit, et efficitur lacus. Maecenas nisi metus, convallis sit amet velit imperdiet, elementum ullamcorper nibh. Sed est neque, egestas vitae massa vitae, mattis posuere lorem.'''
+Finally, the fox decided it was time to give up and go home. While he walked away, he muttered, “I’m sure the grapes were sour anyway.'''
   },
   {
-    'imageAssetPath': 'assets/images/raster/news_2.jpeg',
-    'category': 'Sports',
-    'authorImageAssetPath': 'assets/images/raster/news_author_2.jpeg',
-    'author': 'Rosemay',
-    'date': '2023-02-27',
-    'title': 'What training Do Vollyball Players Need',
+    'imageAssetPath': 'assets/images/raster/lion_mouse.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_2.jpeg',
+    // 'author': 'Rosemay',
+    // 'date': '2023-02-27',
+    'title': 'The lion and the mouse',
     'content':
-        '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit porta diam et bibendum. In malesuada sit amet metus eu malesuada. Nullam laoreet velit risus, sit amet fringilla nisi finibus aliquet. Sed aliquet hendrerit orci quis pulvinar. Proin at condimentum dui. Pellentesque vulputate accumsan diam non consequat. Donec neque erat, ultrices vitae faucibus quis, interdum quis enim. Suspendisse posuere, orci quis lacinia cursus, nibh nisl ultricies diam, eu interdum lectus risus sit amet tortor. Sed pulvinar aliquet malesuada. Cras massa sapien, auctor quis augue vitae, egestas interdum erat. Curabitur id ex a lectus fermentum tincidunt.
+        '''A lion was asleep in the sun one day. A little mouse came out to play. The little mouse ran up the lion’s neck and slid down his back. The lion caught him with a great big smack!
 
-Phasellus consequat, enim id facilisis sodales, ligula quam dignissim urna, vel laoreet ex nibh et odio. Etiam placerat sapien ut erat egestas vehicula. Nullam rutrum tellus eu lectus varius, vel dapibus sapien aliquam. Quisque dapibus, ipsum sit amet dictum congue, libero augue rutrum orci, in consectetur mi nibh in diam. Cras tempor urna dui, consequat laoreet ante pulvinar eu. Aenean rutrum semper ultrices. Ut quis risus odio. Nullam blandit tincidunt rhoncus. Ut vel ultrices orci. Vestibulum sollicitudin in massa et efficitur. Pellentesque tortor elit, condimentum a tincidunt in, malesuada non ligula. Praesent suscipit risus quis quam gravida posuere. Ut volutpat enim egestas, suscipit velit eu, sollicitudin lacus. Sed ut placerat ex.
+‘I’m going to eat you!’ the lion roared, his mouth open wide.
 
-Aenean ornare non erat id maximus. Pellentesque malesuada ligula sed dignissim venenatis. Donec varius odio purus, ut efficitur lorem tempus ac. Aenean non urna id urna porta dapibus. Nullam eget sapien eget odio vulputate laoreet quis quis mi. Fusce aliquam cursus lectus, in semper enim finibus ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam nec lobortis nisl. Donec in euismod ipsum. Duis at posuere tortor. Suspendisse faucibus mauris nec ante semper mattis. Pellentesque malesuada consequat nunc, elementum tempor lorem posuere at. Donec aliquam non diam sit amet fringilla. In fermentum odio velit, quis placerat augue volutpat ac. Aliquam erat volutpat. Nulla blandit turpis mollis enim mattis vehicula.
+‘No, no, please don’t!’ the little mouse cried. ‘Be kind to me and one day I’ll help you.’
 
-Quisque aliquam, enim in pellentesque faucibus, nulla neque interdum erat, quis imperdiet tortor tortor vitae odio. Integer sed massa quis libero fringilla feugiat. Nulla feugiat enim eget tellus facilisis tincidunt. In hac habitasse platea dictumst. Nullam diam magna, fringilla nec libero in, tempor vulputate mi. Donec sed enim vel sapien feugiat aliquet eu id ante. Nunc justo quam, commodo a dignissim vel, tincidunt non nunc. Quisque vehicula tincidunt magna, tincidunt iaculis erat rhoncus fermentum. Phasellus augue lectus, tincidunt sit amet ante non, volutpat bibendum felis. Duis tincidunt risus diam, dapibus pretium ligula sollicitudin non. Quisque fermentum orci sed tellus vulputate laoreet. Fusce ultrices turpis ac sagittis ornare. Etiam mattis a est nec porttitor. Nunc accumsan eget enim ac convallis. Nullam vel blandit sem, nec faucibus dui.
+‘I’m a lion! You’re a mouse! What can you do?’ The lion laughed, very hard, and the mouse ran away.
 
-Curabitur nisl odio, laoreet non lacus vel, luctus sodales sapien. Fusce nec arcu magna. Praesent tincidunt nulla massa, id feugiat purus consequat at. Aliquam suscipit elit sed mauris suscipit cursus. Vivamus fringilla lacus lorem, commodo scelerisque mauris venenatis at. Quisque tincidunt libero arcu, vel venenatis augue varius a. Donec ut tortor pretium, scelerisque urna sed, imperdiet ante. Aliquam vitae est nec odio interdum feugiat non sit amet mi. Etiam dapibus aliquam ultrices. Nulla est lectus, porta quis nulla sed, dictum vehicula velit. Proin porta tempus urna, quis cursus felis lobortis eu. Nullam feugiat tempor metus, et convallis sem sodales et. Ut viverra lacus id leo vestibulum rutrum.'''
+But the mouse was out walking the very next day. He heard a big roar, and squeaked when he saw the king of the jungle tied to a tree. But the mouse had a plan to set him free. The mouse worked quickly and chewed through the rope.
+
+The lion said, ‘Oh little mouse, I had no hope. You were right, little mouse – thank you, I’m free. You’re the best friend there ever could be!’'''
   },
   {
-    'imageAssetPath': 'assets/images/raster/news_3.jpeg',
-    'category': 'Education',
-    'authorImageAssetPath': 'assets/images/raster/news_author_3.jpeg',
-    'author': 'Chris',
-    'date': '2023-02-27',
-    'title': 'Secondary school places: When do parents find out?',
+    'imageAssetPath': 'assets/images/raster/honest.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_3.jpeg',
+    // 'author': 'Chris',
+    // 'date': '2023-02-27',
+    'title': 'Honest',
     'content':
-        '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta semper mattis. Nullam tincidunt ornare auctor. Mauris turpis quam, posuere nec dui quis, posuere volutpat metus. Vestibulum quis feugiat ligula, sed tincidunt massa. Maecenas scelerisque fringilla eros, nec aliquam orci consequat a. Nullam mattis in odio vitae efficitur. Vestibulum ultrices, nibh quis consectetur sagittis, erat lacus sodales lectus, non suscipit odio sapien eget metus. Donec varius ligula metus, vitae vestibulum neque accumsan eget.
+        '''One afternoon, I went to a shop to buy some ink. There was only one young shop assistant in it. He was reading a book.
 
-Quisque sollicitudin congue urna, vel interdum lorem. Phasellus mollis ante urna, sit amet mattis velit aliquet ac. Aliquam venenatis nisi sed lectus tempus fermentum sit amet quis turpis. Donec gravida viverra libero, non finibus purus convallis ut. Sed tincidunt metus risus. In et sollicitudin tortor, dignissim semper odio. Nulla eget libero nec magna fringilla viverra. Nullam non mi vulputate, aliquam dui sed, dictum erat. Ut in mollis lectus, non commodo ligula. Morbi id nibh quis tortor ornare posuere sit amet sed libero. Nunc a diam auctor, ullamcorper risus vel, luctus quam. Mauris ipsum ligula, sodales quis facilisis et, volutpat eu erat. Donec tempor arcu in justo sodales, et pretium velit ultrices.
+“I want to buy a bottle of ink”, I said. There was no answer. He was still going on reading his book. Then I asked again.
 
-Morbi viverra mauris vel nulla cursus gravida. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus eu convallis ligula. Fusce eu ligula ultricies, imperdiet dolor sit amet, porttitor libero. Nunc in tellus et metus rhoncus imperdiet in et sem. Quisque nec tincidunt neque, et laoreet sem. Phasellus non feugiat mi, ut viverra turpis. Duis magna est, sollicitudin nec feugiat ac, faucibus vel ipsum. Pellentesque fermentum tortor at nibh vestibulum, ac blandit ex porta.
+He stood up and gave me a bottle of ink. When I was out of the shop, I found that the change he gave me was too much. So I went back to the shop. The man pulled a long face when he saw me again.
 
-Donec at bibendum orci. Vestibulum venenatis odio non mauris egestas, id feugiat nibh auctor. Suspendisse faucibus sit amet augue ac maximus. Suspendisse volutpat magna nec leo sodales faucibus. Cras sed leo ac elit aliquam imperdiet. Nam dictum tellus nec ornare efficitur. Curabitur consequat feugiat ligula. Vestibulum ut lorem eu quam auctor fermentum ac consectetur orci. Nullam ac gravida purus. Sed aliquam ipsum vitae vehicula sagittis. Pellentesque a rhoncus est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquam pharetra ex, nec accumsan quam pulvinar sed.
+“Now, what do you want to buy?”, he said angrily.
 
-Quisque aliquam ex ut justo consequat, sit amet porttitor purus finibus. Sed vitae justo in mi placerat commodo nec ac enim. Praesent consectetur commodo urna, in volutpat tortor scelerisque et. Phasellus tristique nec enim et sodales. Sed nec sodales felis, interdum eleifend felis. Aliquam bibendum suscipit ante, in accumsan massa maximus at. Sed id libero purus. Curabitur egestas sed nulla eget tincidunt. Nunc porttitor at sem eu ullamcorper. Sed in bibendum libero, vitae tincidunt massa. Donec ornare nisl in magna commodo feugiat. Mauris nibh tellus, dignissim sit amet dui non, sodales consequat justo. Nulla facilisi.'''
+Nothing”, I said: “You gave me too much change just now. I want to give you back the money”.
+
+“Ah, ah, thank you”, the man said with a red face.'''
   },
   {
-    'imageAssetPath': 'assets/images/raster/news_4.jpeg',
-    'category': 'World',
-    'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
-    'author': 'John',
-    'date': '2023-02-27',
-    'title': 'What training Do Vollyball Players Need',
+    'imageAssetPath': 'assets/images/raster/lamd_wolf.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'The wolf and the lamb ',
     'content':
-        '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis sem sed rutrum tincidunt. Donec eget magna pellentesque, sodales justo quis, fermentum massa. Ut sagittis est id auctor tempus. Curabitur vitae pharetra libero. In hac habitasse platea dictumst. Sed imperdiet est nec enim sollicitudin ultricies. Morbi placerat turpis eget velit pretium, in porttitor tellus ullamcorper. Proin enim orci, placerat quis porttitor et, hendrerit ut orci. Nullam luctus elementum ipsum, eu pretium nisi egestas sit amet. Maecenas nibh augue, sagittis in orci non, pulvinar fermentum ex. In fringilla scelerisque eros a fringilla.
+        '''Oneday, a lamb was eating sweet grass away from her flock of sheep. She didn’t notice a wolf walking nearer to her. When she saw the wolf, she started pleading, “Please, don’t eat me. My stomach is full of grass.
 
-Nullam id fermentum purus. Aliquam nisl eros, ultricies malesuada sem eu, ullamcorper luctus justo. Phasellus a faucibus lorem. Curabitur porttitor nulla dui, sed imperdiet arcu condimentum vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ac varius purus, non ornare nunc. Nulla facilisi.
+You can wait a while to make my meat taste much better. The grass in my stomach will be digested quickly if you let me dance.” The wolf agreed.
 
-Suspendisse laoreet eros eget eros feugiat porttitor. Sed sagittis, nibh id facilisis auctor, felis dolor ultricies ligula, non lobortis turpis tellus ut diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique libero et mi tempor, vel fermentum augue consequat. Fusce eu luctus turpis. Fusce ac vestibulum nisi. Proin vestibulum massa mauris, sed tincidunt elit cursus rutrum. Aenean semper scelerisque sapien eu ultricies. Pellentesque tempus vulputate aliquam. Nulla eget nunc a ante suscipit ultricies. Morbi tempus sit amet turpis pulvinar iaculis.
-
-Nullam vel eros vel ligula vestibulum tincidunt vitae quis dui. Nullam nec elit malesuada, efficitur mi at, commodo neque. Sed sed tellus mauris. Integer eget ultricies risus. Phasellus a dui quis augue consequat suscipit. In vel euismod purus, non aliquam mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Proin venenatis aliquam risus ut malesuada. Sed interdum dolor et tempus volutpat. Duis tempor dui sit amet justo dapibus hendrerit. In commodo tortor vel erat hendrerit, vitae posuere sapien porta. Pellentesque cursus nunc in convallis dictum. Suspendisse fermentum tincidunt auctor. Suspendisse potenti. Nullam diam est, pharetra quis tellus nec, cursus efficitur purus. Nulla lorem justo, mattis id metus nec, tempus tincidunt felis. Phasellus dapibus ut tellus eu lacinia. Ut ornare, ipsum in vestibulum pharetra, mauris mauris porta risus, at elementum nunc nisi id ex. Pellentesque pellentesque leo eget odio egestas tempor. Quisque rutrum mauris a odio vestibulum imperdiet. Curabitur vel ullamcorper enim, non blandit tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent euismod felis vitae hendrerit tincidunt.'''
+While the lamb was dancing,she had a new idea. She said, “I can dance faster if you take my bell and ring it so hard.” The wolf took the bell and started to ring so hard. The shepherd heard the sound and ran quickly to save the lamb’s life.'''
   },
   {
-    'imageAssetPath': 'assets/images/raster/news_4.jpeg',
-    'category': 'World',
-    'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
-    'author': 'John',
-    'date': '2023-02-27',
-    'title': 'What training Do Vollyball Players Need',
+    'imageAssetPath': 'assets/images/raster/crow_pitcher.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'The crow and the pitcher',
     'content':
-        '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis sem sed rutrum tincidunt. Donec eget magna pellentesque, sodales justo quis, fermentum massa. Ut sagittis est id auctor tempus. Curabitur vitae pharetra libero. In hac habitasse platea dictumst. Sed imperdiet est nec enim sollicitudin ultricies. Morbi placerat turpis eget velit pretium, in porttitor tellus ullamcorper. Proin enim orci, placerat quis porttitor et, hendrerit ut orci. Nullam luctus elementum ipsum, eu pretium nisi egestas sit amet. Maecenas nibh augue, sagittis in orci non, pulvinar fermentum ex. In fringilla scelerisque eros a fringilla.
+        '''In a spell of dry weather, when the birds could find very little to drink, a thirsty crow found a pitcher with a little bit of water in it.
 
-Nullam id fermentum purus. Aliquam nisl eros, ultricies malesuada sem eu, ullamcorper luctus justo. Phasellus a faucibus lorem. Curabitur porttitor nulla dui, sed imperdiet arcu condimentum vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ac varius purus, non ornare nunc. Nulla facilisi.
+But the pitcher was high and had a narrow neck, and no matter how he tried, the crow could not reach the water. The poor thing felt as if he would die of thirst.
 
-Suspendisse laoreet eros eget eros feugiat porttitor. Sed sagittis, nibh id facilisis auctor, felis dolor ultricies ligula, non lobortis turpis tellus ut diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique libero et mi tempor, vel fermentum augue consequat. Fusce eu luctus turpis. Fusce ac vestibulum nisi. Proin vestibulum massa mauris, sed tincidunt elit cursus rutrum. Aenean semper scelerisque sapien eu ultricies. Pellentesque tempus vulputate aliquam. Nulla eget nunc a ante suscipit ultricies. Morbi tempus sit amet turpis pulvinar iaculis.
-
-Nullam vel eros vel ligula vestibulum tincidunt vitae quis dui. Nullam nec elit malesuada, efficitur mi at, commodo neque. Sed sed tellus mauris. Integer eget ultricies risus. Phasellus a dui quis augue consequat suscipit. In vel euismod purus, non aliquam mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Proin venenatis aliquam risus ut malesuada. Sed interdum dolor et tempus volutpat. Duis tempor dui sit amet justo dapibus hendrerit. In commodo tortor vel erat hendrerit, vitae posuere sapien porta. Pellentesque cursus nunc in convallis dictum. Suspendisse fermentum tincidunt auctor. Suspendisse potenti. Nullam diam est, pharetra quis tellus nec, cursus efficitur purus. Nulla lorem justo, mattis id metus nec, tempus tincidunt felis. Phasellus dapibus ut tellus eu lacinia. Ut ornare, ipsum in vestibulum pharetra, mauris mauris porta risus, at elementum nunc nisi id ex. Pellentesque pellentesque leo eget odio egestas tempor. Quisque rutrum mauris a odio vestibulum imperdiet. Curabitur vel ullamcorper enim, non blandit tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent euismod felis vitae hendrerit tincidunt.'''
+Then an idea came to him. Picking up some small pebbles, he dropped them into the pitcher one by one. With each pebble the water rose a little higher until at last it was high enough so he could drink.'''
   },
   {
-    'imageAssetPath': 'assets/images/raster/news_4.jpeg',
-    'category': 'World',
-    'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
-    'author': 'John',
-    'date': '2023-02-27',
-    'title': 'What training Do Vollyball Players Need',
+    'imageAssetPath': 'assets/images/raster/Young_Man.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'A Nice Young Man',
     'content':
-        '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis sem sed rutrum tincidunt. Donec eget magna pellentesque, sodales justo quis, fermentum massa. Ut sagittis est id auctor tempus. Curabitur vitae pharetra libero. In hac habitasse platea dictumst. Sed imperdiet est nec enim sollicitudin ultricies. Morbi placerat turpis eget velit pretium, in porttitor tellus ullamcorper. Proin enim orci, placerat quis porttitor et, hendrerit ut orci. Nullam luctus elementum ipsum, eu pretium nisi egestas sit amet. Maecenas nibh augue, sagittis in orci non, pulvinar fermentum ex. In fringilla scelerisque eros a fringilla.
+        '''In a spell of dry weather, when the birds could find very little to drink, a thirsty crow found a pitcher with a little bit of water in it.
 
-Nullam id fermentum purus. Aliquam nisl eros, ultricies malesuada sem eu, ullamcorper luctus justo. Phasellus a faucibus lorem. Curabitur porttitor nulla dui, sed imperdiet arcu condimentum vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ac varius purus, non ornare nunc. Nulla facilisi.
+But the pitcher was high and had a narrow neck, and no matter how he tried, the crow could not reach the water. The poor thing felt as if he would die of thirst.
 
-Suspendisse laoreet eros eget eros feugiat porttitor. Sed sagittis, nibh id facilisis auctor, felis dolor ultricies ligula, non lobortis turpis tellus ut diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique libero et mi tempor, vel fermentum augue consequat. Fusce eu luctus turpis. Fusce ac vestibulum nisi. Proin vestibulum massa mauris, sed tincidunt elit cursus rutrum. Aenean semper scelerisque sapien eu ultricies. Pellentesque tempus vulputate aliquam. Nulla eget nunc a ante suscipit ultricies. Morbi tempus sit amet turpis pulvinar iaculis.
+Then an idea came to him. Picking up some small pebbles, he dropped them into the pitcher one by one. With each pebble the water rose a little higher until at last it was high enough so he could drink.'''
+  },
+  {
+    'imageAssetPath': 'assets/images/raster/never_lie.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'Never tell a lie',
+    'content':
+        '''On his deathbed, a father advised his son to always speak the truth. The son promised that he would never tell a lie. One day, while going to the city through a forest, he got surrounded by some robbers. One of them asked: “What do you have?”. The boy answered, “I have fifty rupees”. They searched for him but couldn’t find anything.
 
-Nullam vel eros vel ligula vestibulum tincidunt vitae quis dui. Nullam nec elit malesuada, efficitur mi at, commodo neque. Sed sed tellus mauris. Integer eget ultricies risus. Phasellus a dui quis augue consequat suscipit. In vel euismod purus, non aliquam mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+When they were about to go, the boy called out: “I am not telling a lie. See this fifty rupee note which I had hidden in my shirt”. The leader of the robbers felt pleased at the truthfulness of the boy, and gave him hundred rupees as reward and went away.'''
+  },
+  {
+    'imageAssetPath': 'assets/images/raster/broken_window.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'Who’s Broken a Window',
+    'content':
+        '''Billy and Bobby were small boys. They were brothers, and they often fought with each other. Last Saturday the mother said to them, ‘I’m going to cook our lunch now. Go out and play in the garden… and be good.”
 
-Proin venenatis aliquam risus ut malesuada. Sed interdum dolor et tempus volutpat. Duis tempor dui sit amet justo dapibus hendrerit. In commodo tortor vel erat hendrerit, vitae posuere sapien porta. Pellentesque cursus nunc in convallis dictum. Suspendisse fermentum tincidunt auctor. Suspendisse potenti. Nullam diam est, pharetra quis tellus nec, cursus efficitur purus. Nulla lorem justo, mattis id metus nec, tempus tincidunt felis. Phasellus dapibus ut tellus eu lacinia. Ut ornare, ipsum in vestibulum pharetra, mauris mauris porta risus, at elementum nunc nisi id ex. Pellentesque pellentesque leo eget odio egestas tempor. Quisque rutrum mauris a odio vestibulum imperdiet. Curabitur vel ullamcorper enim, non blandit tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent euismod felis vitae hendrerit tincidunt.'''
+“Yes, Mummy,” the two boys answered and they went out. They played for half an hour, and then Billy ran into the kitchen. “Mummy,” he said, “Bobby’s broken a window in Mrs Allen’s house.” Mrs Allen was one of their neighbors.
+
+“He’s a bad boy,” his mother said, “How did he break it?”
+
+“I threw a stone at him,” Billy answered, “and he quickly moved down.!'''
+  },
+  {
+    'imageAssetPath': 'assets/images/raster/two_frogs.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'The two frogs',
+    'content':
+        '''A group of frogs were traveling through the woods, and two of them fell into a deep pit. When the other frogs saw how deep the pit was, they told the two frogs that they were as good as dead.
+
+The two frogs ignored the comments and tried to jump up out of the pit with all of their might. The other frogs kept telling them to stop, that they were as good as dead. Finally, one of the frogs took heed to what the other frogs were saying and gave up. He fell down and died.
+
+The other frog continued to jump as hard as he could. Once again, the crowd of frogs yelled at him to stop the pain and just die. He jumped even harder and finally made it out. When he got out, the other frogs said, “Did you not hear us?”. The frog explained to them that he was deaf. He thought they were encouraging him the entire time. '''
+  },
+  {
+    'imageAssetPath': 'assets/images/raster/boy_nuts.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'The boy and the nuts',
+    'content': '''A little boy once put his hand into a jar.
+
+The jar was full of nuts. He tried to take out as many as his hand could hold.
+
+But when he tried to pull his hand out, it was too large for the narrow neck of the jar.
+
+The boy didn’t want to lose his nuts. The little boy started to cry.
+
+His mother saw the little boy standing close by, and told him something wise.
+
+“Be happy with half as many, and you will get them easily'''
+  },
+  {
+    'imageAssetPath': 'assets/images/raster/lucky_seed.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'The lucky seed',
+    'content':
+        '''A long time ago, a farmer took a big bag of seeds to sell at the market.
+
+Suddenly, his cart’s wheel hit a big stone. Bump! One of the seeds fell out of the bag and onto the hot, dry ground.
+
+‘I’m scared!’ said the seed. ‘I need to be safe under the soil.’ Just then, a buffalo walked on the seed and pushed it into the ground.
+
+‘I’m thirsty!’ said the seed. ‘I need some water to help me grow.’ Just then, it started to rain.
+
+The next morning the seed had a little green shoot. All day it sat in the sun and grew
+
+taller and taller.
+
+The next day it had its first leaf. This helped it to catch sunlight and grow.
+
+That evening a hungry bird tried to eat it, but the seed had roots to help it stay in the
+
+ground.
+
+Many years of sunshine and rain passed. The seed became a plant and then the plant became a tree.
+
+Today if you visit the countryside you can see the tree. It is big and strong and now makes seeds of its own.”'''
+  },
+  {
+    'imageAssetPath': 'assets/images/raster/sun_wind.jpg',
+    'category': 'Story',
+    // 'authorImageAssetPath': 'assets/images/raster/news_author_4.jpeg',
+    // 'author': 'John',
+    // 'date': '2023-02-27',
+    'title': 'The Sun & The Wind',
+    'content': '''"The wind and the sun are having a disagreement.
+
+“I am the most powerful!” says the wind.
+
+“No, I am the most powerful!” says the sun.
+
+“I can blow trees to the ground!” brags the wind. “I can push ships across the ocean. I can make hurricanes and tornadoes!”
+
+“Is that right?” replies the sun. “Well, I can melt all the snow on the mountains. I can dry up an entire lake. I can make a sidewalk so hot that it cooks an egg!”
+
+Just then, they see a man walking along the road in his winter jacket.
+
+“Let’s have a contest to see who is more powerful,” says the wind. “Whoever can remove the man’s jacket first wins.”
+
+The sun agrees. The wind goes first. He blows a gust of cold wind at the man.
+
+The man shivers and zips up his jacket. “Brrr! What a cold and windy day!”
+
+It starts to rain. The wind blows even harder and turns the rain into snow.
+
+“Well look at that! It’s snowing!” says the man. “Snow wasn’t in the weather forecast today...”
+
+He pulls his hood over his head.
+
+The wind blows his strongest gust towards the man, but the man’s jacket stays on.
+
+"Hmm. It’s a bit fresh today…” he says. “A winter storm must be coming..." He zips the jacket higher to cover his nose.
+
+“Gah! This is impossible,” says the wind. He stops blowing. “My turn!” says the sun.
+
+First the sun shines enough to stop the snow. The man unzips his hood.
+
+Then the sun pulls the clouds apart and gently shines down on the man. Suddenly, it is a beautiful spring day.
+
+“Wow. The weather sure is strange around here!” says the man. He unzips his jacket.
+
+The sun gently wiggles her fingers and increases the temperature.
+
+“What strange weather. Now it feels like summer!” the man says as he begins to sweat. "Goodness me, it's so hot!"
+
+He removes his winter jacket. He lies down on the grass for a nap in the warm sun.
+
+"I win!" says the sun, beaming."'''
   },
 ];

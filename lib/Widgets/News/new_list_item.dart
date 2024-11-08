@@ -1,26 +1,18 @@
-import 'package:app/Definitons/Theme/New_Color.dart';
-import 'package:app/Definitons/app_date_formatters.dart';
-import 'package:app/Pages/News/singe_news_item_page.dart';
 import 'package:flutter/material.dart';
+import 'package:app/Pages/News/singe_news_item_page.dart';
 
 class NewsListItem extends StatelessWidget {
   final String title;
   final String content;
-  final String author;
   final String category;
-  final String authorImageAssetPath;
   final String imageAssetPath;
-  final DateTime date;
 
   const NewsListItem({
     Key? key,
     required this.title,
-    required this.author,
-    required this.category,
-    required this.authorImageAssetPath,
-    required this.imageAssetPath,
-    required this.date,
     required this.content,
+    required this.category,
+    required this.imageAssetPath,
   }) : super(key: key);
 
   @override
@@ -33,72 +25,44 @@ class NewsListItem extends StatelessWidget {
             builder: (context) => SingleNewsItemPage(
               title: title,
               content: content,
-              author: author,
               category: category,
-              authorImageAssetPath: authorImageAssetPath,
               imageAssetPath: imageAssetPath,
-              date: date,
             ),
           ),
         );
       },
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.grey.shade300),
+          color: Colors.white,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               child: Image.asset(
                 imageAssetPath,
-                width: 150,
-                height: 150,
+                width: double.infinity,
+                height: 120,
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(
-              width: 15,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    category,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: AppColors.osloGray,
-                        ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    title,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage(
-                          authorImageAssetPath,
-                        ),
-                        radius: 12,
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        '$author · ${AppDateFormatters.mdY(date)}',
-                        style: TextStyle(fontSize: 10),
-                      ),
-                    ],
-                  ),
-                ],
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-            )
+            ),
           ],
         ),
       ),
