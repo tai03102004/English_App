@@ -1,8 +1,9 @@
 import 'package:app/Components/HomeTopButton.dart';
+import 'package:app/Widgets/Flashcard/Flashcard.dart';
 import 'package:flutter/material.dart';
 
 class Animals extends StatefulWidget {
-  const Animals({super.key});
+  const Animals({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -17,6 +18,9 @@ class _Animals extends State<Animals> {
         child: CustomScrollView(
           slivers: [
             HomeTopButton(),
+            SliverToBoxAdapter(
+              child: FlashcardList(),
+            )
           ],
         ),
       ),

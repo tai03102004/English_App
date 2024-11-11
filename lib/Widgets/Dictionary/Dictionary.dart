@@ -48,7 +48,7 @@ class _SearchPageState extends State<SearchPage> {
   bool _isLoading = false;
 
   void _searchWord() async {
-    String query = _controller.text;
+    String query = _controller.text.toLowerCase();
     if (query.isNotEmpty) {
       setState(() {
         _isLoading = true; // Show loading indicator
