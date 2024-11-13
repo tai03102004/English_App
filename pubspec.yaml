@@ -44,6 +44,8 @@ flutter:
     - lib/sources/
     - assets/images/profiles/
     - assets/images/home/
+    - assets/data/
+    - assets/data/Animals.txt
 
   fonts:
     - family: Lato

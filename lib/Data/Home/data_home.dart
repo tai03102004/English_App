@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 final List<String> entries = <String>[
   'Animals',
-  'In the City',
-  'Alphabet',
+  'Transportation',
+  'Family',
   'Nature',
 ];
 final List<Widget> pages = <Widget>[

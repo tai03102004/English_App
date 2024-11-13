@@ -1,6 +1,8 @@
 import 'package:app/Components/HomeTopButton.dart';
 import 'package:flutter/material.dart';
 
+import '../../Flashcard/Flashcard.dart';
+
 class Nature extends StatefulWidget {
   const Nature({super.key});
 
@@ -17,6 +19,9 @@ class _Nature extends State<Nature> {
         child: CustomScrollView(
           slivers: [
             HomeTopButton(),
+            SliverToBoxAdapter(
+              child: FlashcardList(topic: 'Family',),
+            )
           ],
         ),
       ),

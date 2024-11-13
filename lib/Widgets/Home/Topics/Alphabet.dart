@@ -1,6 +1,8 @@
 import 'package:app/Components/HomeTopButton.dart';
 import 'package:flutter/material.dart';
 
+import '../../Flashcard/Flashcard.dart';
+
 class Alphabet extends StatefulWidget {
   const Alphabet({super.key});
 
@@ -17,6 +19,9 @@ class _Alphabet extends State<Alphabet> {
         child: CustomScrollView(
           slivers: [
             HomeTopButton(),
+            SliverToBoxAdapter(
+              child: FlashcardList(topic: 'Family',),
+            )
           ],
         ),
       ),

@@ -19,7 +19,7 @@ class _Animals extends State<Animals> {
           slivers: [
             HomeTopButton(),
             SliverToBoxAdapter(
-              child: FlashcardList(),
+              child: FlashcardList(topic: 'Animals',),
             )
           ],
         ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../helpers/dbHelper.dart';
 import '../Dictionary/Dictionary.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
 void main() => runApp(MyApp());
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
             ),
             Expanded(
               // Ensures the FlashcardList takes the available space
-              child: FlashcardList(),
+              child: FlashcardList(topic: 'abc'),
             ),
           ],
         ),
@@ -33,11 +35,18 @@ class MyApp extends StatelessWidget {
 }
 
 class FlashcardList extends StatefulWidget {
+  final String topic;
+
+  FlashcardList({required this.topic});
+
   @override
   _FlashcardListState createState() => _FlashcardListState();
 }
 
 class _FlashcardListState extends State<FlashcardList> {
+  List<Map<String, String>> words = [];
+
+  //List<Topic> topics =[];
   List<Map<String, dynamic>> vocabList = [
     {"word": "Ephemeral", "definition": "Lasting for a very short time"},
     {
@@ -84,30 +93,26 @@ class _FlashcardListState extends State<FlashcardList> {
   @override
   void initState() {
     super.initState();
-    //fetchRandomWords();
+    loadWords(widget.topic).then((loadedWords) {
+      setState(() {
+        words = loadedWords;
+      });
+    });
   }
-
-  // void fetchRandomWords() async {
-  //   List<Map<String, dynamic>> words =
-  //       await DatabaseHelper().getRandomWords(30);
-  //   setState(() {
-  //     vocabList = words;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
-    print("Vocab List: $vocabList");
+    print("Vocab List: $words");
     // Debugging statement
-    return vocabList.isEmpty
+    return words.isEmpty
         ? Center(child: CircularProgressIndicator())
         : Container(
             color: Colors.brown,
-            height: 600,
+            height: 400,
             child: PageView.builder(
-              itemCount: vocabList.length,
+              itemCount: words.length,
               itemBuilder: (context, index) {
-                final word = vocabList[index];
+                final word = words[index];
                 if (word['word'] == null || word['definition'] == null) {
                   return Center(child: Text('Invalid vocab entry'));
                 }
@@ -132,8 +137,8 @@ class _FlashcardListState extends State<FlashcardList> {
                     // );
                   },
                   child: Flashcard(
-                    word: word['word'],
-                    definition: word['definition'],
+                    word: word['word'] ?? '',
+                    definition: word['definition'] ?? '',
                   ),
                 );
               },
@@ -206,7 +211,7 @@ class _FlashcardState extends State<Flashcard> {
       width: 400,
       height: 300,
       child: Card(
-        color: Colors.lightGreen,
+        color: Color(0xFFBDA79B),
         // Light blue background color for flashcards
         elevation: 5,
         child: Padding(
@@ -219,7 +224,7 @@ class _FlashcardState extends State<Flashcard> {
               // Fade-in effect for the content
               child: Text(
                 text,
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                style: TextStyle(fontFamily:'Rubik',fontSize: 40, fontWeight: FontWeight.normal),
                 textAlign: alignment == Alignment.center
                     ? TextAlign.center
                     : TextAlign.left,
@@ -255,6 +260,29 @@ class RotationYTransition extends AnimatedWidget {
             ),
     );
   }
+}
+
+Future<List<Map<String, String>>> loadWords(String topic) async {
+  List<Map<String, String>> wordList = [];
+
+  try {
+    // Access the file from assets
+    final String fileContent =
+        await rootBundle.loadString('assets/data/$topic.txt');
+    List<String> lines = fileContent.split('\n');
+
+    for (var line in lines) {
+      // Assume each line has the format: word:meaning
+      List<String> parts = line.split(':');
+      if (parts.length == 2) {
+        wordList.add({'word': parts[0].trim(), 'definition': parts[1].trim()});
+      }
+    }
+  } catch (e) {
+    print("Error loading file: $e");
+  }
+
+  return wordList;
 }
 
 // class VocabDetailPage extends StatelessWidget {
