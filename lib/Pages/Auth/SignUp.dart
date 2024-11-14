@@ -105,14 +105,23 @@ class _SignUpState extends State<SignUp> {
             ),
             SizedBox(height: 10),
             // Navigate to Login screen
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
-              },
-              child: Text('Already have an account? Log in'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Already have an account? "),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login'); // Điều hướng đến trang đăng ký
+                  },
+                  child: Text(
+                    'Log In',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

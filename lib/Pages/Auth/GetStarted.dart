@@ -1,13 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app/Pages/Auth/LoginPage.dart';
 import 'package:app/Pages/Auth/SignUpPage.dart';
-import 'package:flutter/material.dart';
+import '../Home/HomePage.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  bool isFirstLaunch = await _checkFirstLaunch();
+
+  runApp(MyApp(isFirstLaunch: isFirstLaunch));
+}
+
+Future<bool> _checkFirstLaunch() async {
+  final prefs = await SharedPreferences.getInstance();
+  bool isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
+
+  // Lưu trạng thái rằng app đã được mở lần đầu
+  if (isFirstLaunch) {
+    await prefs.setBool('isFirstLaunch', false);
+  }
+
+  return isFirstLaunch;
+}
+
+class MyApp extends StatelessWidget {
+  final bool isFirstLaunch;
+
+  MyApp({required this.isFirstLaunch});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: isFirstLaunch ? GetStarted() : HomePage(), // Chuyển đến màn hình Get Started nếu là lần đầu
+    );
+  }
+}
 
 class GetStarted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

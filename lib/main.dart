@@ -5,6 +5,8 @@ import 'package:app/Pages/Page/MainHome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'Pages/Auth/Login.dart';
+import 'Pages/Auth/SignUp.dart';
 import 'Pages/Page/MainHome.dart';
 
 void main() async {
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => GetStarted(),
         '/home': (context) => MainPage(),
+        '/login': (context) => Login(),
+        '/signup': (context) => SignUp(),
       },
       debugShowCheckedModeBanner: false,
     );

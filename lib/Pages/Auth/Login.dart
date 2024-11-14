@@ -63,7 +63,7 @@ class _LoginState extends State<Login> {
                 Text('Remember me'),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/home');
@@ -80,7 +80,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+
             // Forgot password text
             TextButton(
               onPressed: () {
@@ -88,7 +88,24 @@ class _LoginState extends State<Login> {
               },
               child: Text('Forgot the password?'),
             ),
-            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Don't have an account? "),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signup'); // Điều hướng đến trang đăng ký
+                  },
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
             // Social login options
             Text('or continue with'),
             SizedBox(height: 10),
