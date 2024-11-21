@@ -34,19 +34,23 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     AppSizes().init(context);
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (value) {
-          setState(() {
-            _pageIndex = value;
-          });
-        },
+      body: Stack(
         children: [
-          const HomePage(),
-          Pronunciation_Topic(),
-          const NewsPage(),
-          const RankingPage(),
-          const UserProfilePage(),
+          PageView(
+            controller: _pageController,
+            onPageChanged: (value) {
+              setState(() {
+                _pageIndex = value;
+              });
+            },
+            children: [
+              const HomePage(),
+              Pronunciation_Topic(),
+              const NewsPage(),
+              const RankingPage(),
+              const UserProfilePage(),
+            ],
+          ),
         ],
       ),
       bottomNavigationBar: Padding(

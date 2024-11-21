@@ -1,4 +1,5 @@
 import 'package:app/Definitons/size_config.dart';
+import 'package:app/Widgets/Games/GamePage.dart';
 import 'package:flutter/material.dart';
 
 class Feature extends StatelessWidget {
@@ -25,16 +26,16 @@ class Feature extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Positioned(
-              top: -10,
+              top: -15,
               left: -30,
               child: Image.asset(
                 "assets/images/home/1.png",
-                width: 50,
+                width: 45,
               ),
             ),
             Positioned(
-              bottom: 25,
-              right: -10,
+              bottom: 0,
+              right: -20,
               child: Image.asset(
                 "assets/images/home/2.png",
                 width: 50,
@@ -42,14 +43,12 @@ class Feature extends StatelessWidget {
             ),
             Column(
               children: [
-                _buildText("FEATURED", 16, FontWeight.w700),
+                _buildText("FEATURED", 16, FontWeight.w500),
                 SizedBox(
                   height: 10,
                 ),
-                _buildText("Take part in challenges", 18, FontWeight.bold),
-                _buildText(
-                    "with friends or other players", 18, FontWeight.bold),
-                _buildText("players", 18, FontWeight.bold),
+                _buildText("Tham gia thử thách bằng", 18, FontWeight.bold),
+                _buildText("các trò trò chơi về từ vựng", 18, FontWeight.bold),
                 SizedBox(height: 15),
                 _FindFriendsButton(),
               ],
@@ -76,29 +75,33 @@ class Feature extends StatelessWidget {
 class _FindFriendsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white,
-      ),
-      width: AppSizes.blockSizeHorizontal * 40,
-      child: Row(
-        children: [
-          Image.asset(
-            "assets/images/home/Icon.png",
-            width: 20,
-          ),
-          SizedBox(width: 10),
-          Text(
-            "Find friends",
-            style: TextStyle(
-              fontSize: 14,
-              color: Color(0xFF6A5AE0),
-              fontWeight: FontWeight.w700,
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => GamePage())),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+        width: AppSizes.blockSizeHorizontal * 35,
+        child: Row(
+          children: [
+            Image.asset(
+              "assets/images/home/Icon.png",
+              width: 20,
             ),
-          ),
-        ],
+            SizedBox(width: 10),
+            Text(
+              "Play game",
+              style: TextStyle(
+                fontSize: 14,
+                color: Color(0xFF6A5AE0),
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
