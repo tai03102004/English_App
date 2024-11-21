@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:app/Definitons/size_config.dart';
+import 'package:app/Pages/News/ViewAllStoriesPage.dart';
 import 'package:app/Widgets/News/home_heading.dart';
 import 'package:app/Widgets/News/home_slider.dart';
 import 'package:app/Widgets/News/new_list.dart';
@@ -16,12 +17,21 @@ class News extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             HomeHeading(
-              title: "Breking news",
-              traling: TextButton(onPressed: () {}, child: Text("View all")),
+              title: "Truyện ngắn",
+              traling: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ViewAllStoriesPage(),
+                      ),
+                    );
+                  },
+                  child: Text("View all")),
             ),
             HomeSlider(),
             HomeHeading(
-              title: "Recommendation",
+              title: "Có thể bạn thích",
               traling: TextButton(onPressed: () {}, child: Text("View all")),
             ),
             NewsList(),

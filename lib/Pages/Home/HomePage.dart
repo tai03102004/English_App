@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage>
           check: true,
           check_name: true,
         ),
+        automaticallyImplyLeading: false,
       ),
       body: Stack(
         children: [

@@ -1,5 +1,5 @@
 import 'package:app/Definitons/Theme/New_Color.dart';
-import 'package:app/Definitons/app_date_formatters.dart';
+// import 'package:app/Definitons/app_date_formatters.dart';
 import 'package:app/Pages/News/singe_news_item_page.dart';
 import 'package:flutter/material.dart';
 
@@ -9,21 +9,21 @@ class HomeSliderItem extends StatelessWidget {
   final String category;
   final String title;
   final String content;
-  final String authorImageAssetPath;
+  // final String authorImageAssetPath;
 
-  final String author;
-  final DateTime date;
-  const HomeSliderItem(
-      {Key? key,
-      required this.isActive,
-      required this.imageAssetPath,
-      required this.category,
-      required this.title,
-      required this.author,
-      required this.date,
-      required this.content,
-      required this.authorImageAssetPath})
-      : super(key: key);
+  // final String author;
+  // final DateTime date;
+  const HomeSliderItem({
+    Key? key,
+    required this.isActive,
+    required this.imageAssetPath,
+    required this.category,
+    required this.title,
+    // required this.author,
+    // required this.date,
+    required this.content,
+    // required this.authorImageAssetPath,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +33,14 @@ class HomeSliderItem extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => SingleNewsItemPage(
-                    title: title,
-                    content: content,
-                    author: author,
-                    category: category,
-                    authorImageAssetPath: authorImageAssetPath,
-                    imageAssetPath: imageAssetPath,
-                    date: date)));
+                      title: title,
+                      content: content,
+                      // author: author,
+                      category: category,
+                      // authorImageAssetPath: authorImageAssetPath,
+                      imageAssetPath: imageAssetPath,
+                      // date: date,
+                    )));
       },
       child: FractionallySizedBox(
         widthFactor: 1.08,
@@ -84,14 +85,14 @@ class HomeSliderItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        '$author - ${AppDateFormatters.mdY(date)}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall
-                            ?.copyWith(color: AppColors.white),
-                        maxLines: 1,
-                      ),
+                      // Text(
+                      // '$author - ${AppDateFormatters.mdY(date)}',
+                      //   style: Theme.of(context)
+                      //       .textTheme
+                      //       .headlineSmall
+                      //       ?.copyWith(color: AppColors.white),
+                      //   maxLines: 1,
+                      // ),
                       SizedBox(
                         height: 0,
                       ),

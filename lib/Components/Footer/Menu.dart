@@ -43,9 +43,9 @@ class _Menu extends State<Menu> {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> buttonNavItems = [
       {'icon': IconlyLight.home, 'index': 0},
-      {'icon': HugeIcons.strokeRoundedChampion, 'index': 1},
-      {'icon': HugeIcons.strokeRoundedAiBrain02, 'index': 2},
-      {'icon': HugeIcons.strokeRoundedNews, 'index': 3},
+      {'icon': HugeIcons.strokeRoundedAiBrain02, 'index': 1},
+      {'icon': HugeIcons.strokeRoundedNews, 'index': 2},
+      {'icon': HugeIcons.strokeRoundedChampion, 'index': 3},
       {'icon': IconlyLight.user, 'index': 4},
     ];
 

@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Chúng tôi cần quyền truy cập microphone để sử dụng tính năng Text-to-Speech.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Chúng tôi cần quyền truy cập để nhận diện giọng nói.</string>
+
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

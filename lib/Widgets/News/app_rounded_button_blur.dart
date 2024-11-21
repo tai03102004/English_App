@@ -12,7 +12,7 @@ class AppRoundedButtonBlur extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.white02,
+      color: const Color.fromARGB(84, 247, 85, 36),
       borderRadius: BorderRadius.circular(56),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(56),

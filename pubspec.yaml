@@ -18,17 +18,20 @@ dependencies:
   iconsax: ^0.0.8
   iconly: ^1.0.1
   hugeicons: ^0.0.7
-  flutter_svg: ^2.0.10+1
+  flutter_svg: ^2.0.14
   intl: ^0.19.0
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.3.2
   percent_indicator: ^4.2.3
   fl_chart: ^0.69.0
+  flutter_tts: ^4.0.2
+  permission_handler: ^11.3.1
+  audioplayers: ^6.1.0
+  speech_to_text: ^7.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  sqflite: ^2.0.0+4
 
   flutter_lints: ^2.0.0
 
@@ -38,14 +41,13 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/images/home/
     - assets/images/raster/
     - assets/images/users/
-    - lib/sources/
     - assets/images/profiles/
     - assets/images/home/
-    - assets/data/
-    - assets/data/Animals.txt
+    - assets/svg/
+    - assets/audios/
+    - assets/audios/ipa/
 
   fonts:
     - family: Lato
