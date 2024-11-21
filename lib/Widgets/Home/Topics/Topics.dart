@@ -1,18 +1,31 @@
 import 'package:app/Components/HomeTopButton.dart';
 import 'package:app/Pages/MultipleChoice/MultipleChoice.dart';
+import 'package:app/helpers/dbHelper.dart';
 import 'package:flutter/material.dart';
 
 import '../../Flashcard/Flashcard.dart';
 
-class Nature extends StatefulWidget {
-  const Nature({super.key});
-
+class Topic extends StatefulWidget {
+  final String topic ;
+  const Topic({Key? key, required this.topic}) : super(key: key);
   @override
   // ignore: library_private_types_in_public_api
-  _Nature createState() => _Nature();
+  _Topic createState() => _Topic();
 }
 
-class _Nature extends State<Nature> {
+class _Topic extends State<Topic> {
+  List<Map<String, String>> words = [];
+
+  @override
+  void initState() {
+    super.initState();
+    DatabaseHelper().loadWords(widget.topic).then((loadedWords) {
+      setState(() {
+        words = loadedWords;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +35,7 @@ class _Nature extends State<Nature> {
             HomeTopButton(),
             SliverToBoxAdapter(
               child: FlashcardList(
-                topic: 'Nature',
+                words: words,
               ),
             ),
             SliverToBoxAdapter(
@@ -31,20 +44,13 @@ class _Nature extends State<Nature> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => TestPage(
-                        words: [
-                          {'word': 'apple', 'definition': 'Quả táo'},
-                          {'word': 'banana', 'definition': 'Quả chuối'},
-                          {'word': 'cherry', 'definition': 'Quả che ri'},
-                          {'word': 'grape', 'definition': 'Quả nho'},
-                        ],
-                      ),
+                      builder: (context) => TestPage(words: words),
                     ),
                   );
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+                  margin: EdgeInsets.symmetric(horizontal: 0, vertical: 2),
                   decoration: BoxDecoration(
                     color: Colors.brown,
                     borderRadius: BorderRadius.circular(12),
@@ -87,12 +93,9 @@ class _Nature extends State<Nature> {
                 ),
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 }
-
-

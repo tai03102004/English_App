@@ -46,4 +46,27 @@ class DatabaseHelper {
     final db = await database;
     return await db.rawQuery('SELECT * FROM bookmark ORDER BY RANDOM() LIMIT ?', [limit]);
   }
+
+  Future<List<Map<String, String>>> loadWords(String topic) async {
+    List<Map<String, String>> wordList = [];
+
+    try {
+      // Access the file from assets
+      final String fileContent =
+      await rootBundle.loadString('assets/data/$topic.txt');
+      List<String> lines = fileContent.split('\n');
+
+      for (var line in lines) {
+        // Assume each line has the format: word:meaning
+        List<String> parts = line.split(':');
+        if (parts.length == 2) {
+          wordList.add({'word': parts[0].trim(), 'definition': parts[1].trim()});
+        }
+      }
+    } catch (e) {
+      print("Error loading file: $e");
+    }
+
+    return wordList;
+  }
 }

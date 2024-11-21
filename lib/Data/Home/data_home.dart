@@ -1,8 +1,7 @@
-import 'package:app/Widgets/Home/Topics/Alphabet.dart';
-import 'package:app/Widgets/Home/Topics/Animals.dart';
-import 'package:app/Widgets/Home/Topics/In_the_city.dart';
-import 'package:app/Widgets/Home/Topics/Nature.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../Widgets/Home/Topics/Topics.dart';
 
 final List<String> entries = <String>[
   'Animals',
@@ -10,11 +9,17 @@ final List<String> entries = <String>[
   'Family',
   'Nature',
 ];
+// final List<Widget> pages = <Widget>[
+//   Animals(),
+//   Cities(),
+//   Alphabet(),
+//   Nature(),
+// ];
 final List<Widget> pages = <Widget>[
-  Animals(),
-  Cities(),
-  Alphabet(),
-  Nature(),
+  Topic (topic:'Animals'),
+  Topic (topic:'Transportation'),
+  Topic (topic:'Family'),
+  Topic (topic:'Nature'),
 ];
 final List<String> images = <String>[
   'assets/images/home/animal.png',
