@@ -1,0 +1,13 @@
+Tree: Cây
+Branch: Cành
+Forest: Rừng
+Wood: Gỗ
+Grass: Cỏ
+Ecosystem: Hệ sinh thái
+Nature: Thiên nhiên
+Cave: Hang động
+Volcano: Núi lửa
+River: Sông
+Lake: Hồ
+Stream: Suối
+Mud: Bùn
