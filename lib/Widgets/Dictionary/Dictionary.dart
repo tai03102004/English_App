@@ -15,8 +15,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false, home: Scaffold(body: Dictionary()));
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Scaffold(
+        body:Dictionary()) );
   }
 }
 
@@ -28,8 +28,10 @@ class Dictionary extends StatefulWidget {
 }
 
 class _DictionaryState extends State<Dictionary> {
+
   @override
   Widget build(BuildContext context) {
+
     return SearchPage();
   }
 }
@@ -42,33 +44,30 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final _controller = TextEditingController();
   List<String> _suggestions = [];
-  Word? _searchResult = null;
+  String _searchResult = "";
   bool _isLoading = false;
 
   void _searchWord() async {
-    setState(() {
-      _searchResult = null;
-      _suggestions = []; // Clear suggestions when searching
-      _isLoading = true; // Show loading indicator
-    });
-
     String query = _controller.text.toLowerCase();
     if (query.isNotEmpty) {
-      Word? result = await Word.search(query);
       setState(() {
-        _isLoading = false;
+        _isLoading = true; // Show loading indicator
+        //print(query);
+      });
+
+      Word? result = await Word.search(query); // Call the static search method
+      setState(() {
+        _isLoading = false; // Hide loading indicator
         if (result != null) {
-          _searchResult = result;
+          _searchResult = result.definition; // Show the definition
         } else {
-          _searchResult = null;
+          _searchResult = "Word not found.";
         }
       });
     }
   }
-
   // New method to update suggestions based on user input
   void _updateSuggestions(String query) async {
-    _searchResult = null;
     if (query.isNotEmpty) {
       // Fetch suggestions from the database
       List<String> suggestions = await Word.Suggestions(query);
@@ -87,27 +86,12 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Tra cứu từ vựng")),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.history),
-            onPressed: () {
-              // Navigate to History Screen
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.bookmark),
-            onPressed: () {
-              // Navigate to Bookmarked Words
-            },
-          ),
-        ],
+        title: Center(child:Text("Tra cứu từ vựng")),
         backgroundColor: Color(0xFF81C784),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
               controller: _controller,
@@ -122,71 +106,27 @@ class _SearchPageState extends State<SearchPage> {
               onChanged: _updateSuggestions,
               onSubmitted: (text) => _searchWord(),
             ),
-
             SizedBox(height: 20),
             Expanded(
-              child: Stack(
-                children: [
-                  if (!_isLoading && _searchResult != null)
-                    ListView(
-                      children: [
-                        Text(
-                          _searchResult!.definition,
-                          style: TextStyle(
-                            fontFamily: 'Rubik',
-                            fontSize: 25,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          "/${_searchResult!.pronounce}/ ",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        Text(
-                          "${_searchResult!.eDefinition}",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(height: 10),
-
-                        SizedBox(height: 10),
-                        Text(
-                          "Example: ${_searchResult!.example}",
-                          style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Synonyms: ${_searchResult!.synonyms}",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Type: ${_searchResult!.type}",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  // Suggestions overlay, shown only when there are suggestions
-                  if (_suggestions.isNotEmpty)
-                    ListView.builder(
-                      itemCount: _suggestions.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(_suggestions[index]),
-                          onTap: () {
-                            // Set the selected suggestion in the search field
-                            _controller.text = _suggestions[index];
-                            _suggestions.clear(); // Clear suggestions after selection
-                            _searchWord(); // Execute search for the selected word
-                          },
-                        );
-                      },
-                    ),
-                  // Loading indicator, centered in the overlay
-                  if (_isLoading)
-                    Center(child: CircularProgressIndicator()),
-                ],
+              child: ListView.builder(
+                itemCount: _suggestions.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(_suggestions[index]),
+                    onTap: () {
+                      // Populate the text field with the selected suggestion
+                      _controller.text = _suggestions[index];
+                      _suggestions.clear(); // Clear suggestions after selection
+                      _searchWord(); // Execute search for the selected word
+                    },
+                  );
+                },
               ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              _searchResult,
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -276,10 +216,9 @@ class Word {
         whereArgs: ['$query%'],
       );
 
-      suggestions = results
-          .map((e) => e['source'] as String)
-          .toList(); // Extract the 'source' field for suggestions
+      suggestions = results.map((e) => e['source'] as String).toList(); // Extract the 'source' field for suggestions
     }
     return suggestions;
   }
 }
+

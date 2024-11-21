@@ -19,7 +19,7 @@ final List<Widget> pages = <Widget>[
 final List<String> images = <String>[
   'assets/images/home/animal.png',
   'assets/images/home/street.png',
-  'assets/images/home/family.png',
+  'assets/images/home/alphabet.png',
   'assets/images/home/park.png'
 ];
 final List<Color> colorCodes = <Color>[
