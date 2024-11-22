@@ -187,6 +187,7 @@ class _FlashcardState extends State<Flashcard> {
               child: Text(
                 text,
                 style: TextStyle(
+                  color: Colors.white,
                     fontFamily: 'Rubik',
                     fontSize: 40,
                     fontWeight: FontWeight.normal),
