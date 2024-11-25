@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -7,12 +9,68 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _isRememberMeChecked = false;
-  bool _obscureText = true; // Biến để điều khiển trạng thái hiển thị mật khẩu
+  bool _obscureText = true;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  String? _errorMessage;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   void _togglePasswordVisibility() {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  // Hàm đăng nhập qua Google
+  Future<User?> _signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        return null; // Người dùng huỷ bỏ đăng nhập
+      }
+
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Đăng nhập vào Firebase
+      final UserCredential userCredential = await _auth.signInWithCredential(credential);
+      return userCredential.user;
+    } catch (e) {
+      setState(() {
+        _errorMessage = 'Lỗi đăng nhập Google: $e';
+      });
+      return null;
+    }
+  }
+
+  // Hàm đăng nhập qua email và password
+  void _signInWithEmailPassword() async {
+    if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
+      setState(() {
+        _errorMessage = 'Please fill in all fields.';
+      });
+      return;
+    }
+
+    try {
+      // Đăng nhập người dùng với Firebase sử dụng email và password
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+
+      // Nếu đăng nhập thành công, điều hướng đến trang Home
+      Navigator.pushReplacementNamed(context, '/home');
+    } catch (e) {
+      setState(() {
+        _errorMessage = e.toString(); // Hiển thị lỗi
+      });
+    }
   }
 
   @override
@@ -21,21 +79,43 @@ class _LoginState extends State<Login> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                SizedBox(width: 10),
+                Text(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
             Image.asset('assets/images/capy_login.png', height: 180),
             SizedBox(height: 30),
+            // Username field
             TextField(
+              controller: _emailController,
               decoration: InputDecoration(
-                labelText: 'Username',
-                prefixIcon: Icon(Icons.account_circle_sharp),
+                labelText: 'Email',
+                prefixIcon: Icon(Icons.email),
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 20),
-            // Password Field
+            // Password field
             TextField(
               obscureText: _obscureText,
+              controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
                 prefixIcon: Icon(Icons.lock),
@@ -65,9 +145,7 @@ class _LoginState extends State<Login> {
             ),
             SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/home');
-              },
+              onPressed: _signInWithEmailPassword,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFD3B591),
                 minimumSize: Size(double.infinity, 50),
@@ -81,10 +159,20 @@ class _LoginState extends State<Login> {
               ),
             ),
 
+            // Hiển thị lỗi nếu có
+            if (_errorMessage != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(
+                  _errorMessage!,
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
             // Forgot password text
             TextButton(
               onPressed: () {
                 // Xử lý quên mật khẩu
+                
               },
               child: Text('Forgot the password?'),
             ),
@@ -106,7 +194,6 @@ class _LoginState extends State<Login> {
                 ),
               ],
             ),
-            // Social login options
             Text('or continue with'),
             SizedBox(height: 10),
             Row(
@@ -118,8 +205,13 @@ class _LoginState extends State<Login> {
                     width: 50,
                     height: 50,
                   ),
-                  onPressed: () {
-                    // Đăng nhập bằng Google
+                  onPressed: () async {
+                    User? user = await _signInWithGoogle();
+                    if (user != null) {
+                      Navigator.pushReplacementNamed(context, '/home');
+                    } else {
+                      print('Đăng nhập thất bại');
+                    }
                   },
                 ),
               ],
