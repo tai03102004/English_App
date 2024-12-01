@@ -1,11 +1,9 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-
-import '../../Widgets/Home/Topics/Topics.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class TestPage extends StatefulWidget {
-  final List<Map<String, String>> words; // List of words with definitions
+  final List<Map<String, String>> words;
 
   TestPage({required this.words});
 
@@ -32,18 +30,17 @@ class _TestPageState extends State<TestPage> {
   }
 
   void loadQuestion() {
-    // Select the current word
-    final wordItem = widget.words[questionIndex];
-    currentWord = wordItem['word']!;
-    correctDefinition = wordItem['definition']!;
+    //final wordItem = widget.words[questionIndex];
+    //currentWord = wordItem['word']!;
+    currentWord = widget.words[questionIndex]['word']!;
+    //correctDefinition = wordItem['definition']!;
+    correctDefinition = widget.words[questionIndex]['definition']!;
 
-    // Get incorrect definitions
     List<String> allDefinitions =
-        widget.words.map((item) => item['definition']!).toList();
+    widget.words.map((item) => item['definition']!).toList();
     allDefinitions.remove(correctDefinition);
     allDefinitions.shuffle(_random);
 
-    // Combine correct definition with incorrect ones and shuffle
     options = [correctDefinition, ...allDefinitions.take(3)];
     options.shuffle(_random);
 
@@ -67,18 +64,26 @@ class _TestPageState extends State<TestPage> {
           loadQuestion();
         });
       } else {
-        // End of questions
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text("Quiz Complete"),
-            content: Text("You've completed the quiz!"),
+            title: Text("🎉 Quiz Complete!"),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "You've answered $numOfCorrectAnswers out of $numOfWords correctly.",
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 20),
+                //Image.asset("assets/congrats.png", height: 100),
+              ],
+            ),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  Navigator.pop(context);  // First pop: closes the dialog.
-                  //Navigator.pop(context);
+                  Navigator.pop(context);
                 },
                 child: Text("OK"),
               ),
@@ -92,95 +97,91 @@ class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffD3A29D),
+      backgroundColor: Color(0xffF7E8D5),
       appBar: AppBar(
-        title: Text("Quiz Time"),
+        title: Text("Kiểm tra từ vựng"),
+        centerTitle: true,
+        backgroundColor: Color(0xffF76C6C),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Text(
-            //   "What is the definition of:",
-            //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            // ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Correct: $numOfCorrectAnswers / $numOfWords ",
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: 'Rubik', fontSize: 15),
-                ),
-                SizedBox(
-                  width: 140,
-                ),
-                Text(
-                  "Question: ${questionIndex + 1} / $numOfWords ",
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: 'Rubik', fontSize: 15),
-                ),
-              ],
+            LinearPercentIndicator(
+              lineHeight: 8.0,
+              percent: (numOfCorrectAnswers) / numOfWords,
+              progressColor: Colors.greenAccent,
+              backgroundColor: Colors.grey.shade300,
+              animation: true,
+              animationDuration: 0,
             ),
-            SizedBox(height: 50),
-            Center(
-              child: Text(
-                currentWord,
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontSize: 35,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.white,
-                ),
+            SizedBox(height: 20),
+            Text(
+              "Question ${questionIndex + 1} / $numOfWords",
+              style: TextStyle(
+                fontFamily: 'Rubik',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 40),
+            Text(
+              currentWord,
+              style: TextStyle(
+                fontFamily: 'Rubik',
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.brown,
+              ),
+            ),
+            SizedBox(height: 30),
             GridView.count(
               crossAxisCount: 2,
-              // Number of items per row
               mainAxisSpacing: 10.0,
-              // Space between rows
-              crossAxisSpacing: 8.0,
-              // Space between columns
+              crossAxisSpacing: 10.0,
               shrinkWrap: true,
-              // Let GridView adjust its height
               physics: NeverScrollableScrollPhysics(),
-              // Disable scrolling if inside another scrollable widget
               children: options.map((option) {
                 bool isCorrect = option == correctDefinition;
                 return GestureDetector(
                   onTap: isAnswered ? null : () => checkAnswer(option),
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
-                    padding: EdgeInsets.all(12),
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: 500),
+                    margin: EdgeInsets.all(8),
+                    padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: isAnswered
-                          ? (isCorrect
-                              ? Colors
-                                  .green.shade300 // Correct option turns green
-                              : (selectedOption == option
-                                  ? Colors.red.shade400
-                                  : Color(
-                                      0xffE8B298))) // Wrong selected turns red
-                          : Color(0xffE8B298),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: isAnswered
+                      gradient: LinearGradient(
+                        colors: isAnswered
                             ? (isCorrect
-                                ? Colors.green
-                                : Colors.red.withOpacity(0.5))
-                            : Colors.white,
+                            ? [Colors.greenAccent, Colors.green]
+                            : (selectedOption == option
+                            ? [Colors.redAccent, Colors.red]
+                            : [Colors.white, Colors.grey.shade200]))
+                            : [Colors.orangeAccent, Colors.orange],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade400,
+                          blurRadius: 4,
+                          offset: Offset(2, 4),
+                        )
+                      ],
                     ),
                     child: Center(
                       child: Text(
                         option,
                         style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Rubik',
-                            fontSize: 28),
+                          color: isAnswered && selectedOption == option
+                              ? Colors.white
+                              : Colors.black,
+                          fontSize: 18,
+                          fontFamily: 'Rubik',
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
