@@ -23,32 +23,43 @@ class _LoginState extends State<Login> {
     });
   }
 
-  // Hàm đăng nhập qua Google
-  Future<User?> _signInWithGoogle() async {
+  // Đăng nhập bằng Google
+  Future<void> _signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) {
-        return null; // Người dùng huỷ bỏ đăng nhập
-      }
+      if (googleUser == null) return; // Người dùng hủy đăng nhập
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+      await googleUser.authentication;
+
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
-      // Đăng nhập vào Firebase
-      final UserCredential userCredential = await _auth.signInWithCredential(credential);
-      return userCredential.user;
+      final UserCredential userCredential =
+      await _auth.signInWithCredential(credential);
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        String? name = user.displayName;
+        String? photoUrl = user.photoURL;
+
+        // Điều hướng đến trang Home và truyền thông tin người dùng
+        Navigator.pushReplacementNamed(
+          context,
+          '/home',
+          arguments: {'name': name, 'photoUrl': photoUrl},
+        );
+      }
     } catch (e) {
       setState(() {
         _errorMessage = 'Lỗi đăng nhập Google: $e';
       });
-      return null;
     }
   }
 
-  // Hàm đăng nhập qua email và password
+  // Đăng nhập bằng email và mật khẩu
   void _signInWithEmailPassword() async {
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
       setState(() {
@@ -58,17 +69,15 @@ class _LoginState extends State<Login> {
     }
 
     try {
-      // Đăng nhập người dùng với Firebase sử dụng email và password
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
 
-      // Nếu đăng nhập thành công, điều hướng đến trang Home
       Navigator.pushReplacementNamed(context, '/home');
     } catch (e) {
       setState(() {
-        _errorMessage = e.toString(); // Hiển thị lỗi
+        _errorMessage = 'Lỗi đăng nhập email: $e';
       });
     }
   }
@@ -92,17 +101,13 @@ class _LoginState extends State<Login> {
                 SizedBox(width: 10),
                 Text(
                   'Login',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.normal,
-                  ),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
                 ),
               ],
             ),
             SizedBox(height: 30),
             Image.asset('assets/images/capy_login.png', height: 180),
             SizedBox(height: 30),
-            // Username field
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
@@ -112,7 +117,6 @@ class _LoginState extends State<Login> {
               ),
             ),
             SizedBox(height: 20),
-            // Password field
             TextField(
               obscureText: _obscureText,
               controller: _passwordController,
@@ -121,7 +125,7 @@ class _LoginState extends State<Login> {
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                    _obscureText ? Icons.visibility_off : Icons.visibility,
                   ),
                   onPressed: _togglePasswordVisibility,
                 ),
@@ -129,7 +133,6 @@ class _LoginState extends State<Login> {
               ),
             ),
             SizedBox(height: 10),
-            // Remember me checkbox
             Row(
               children: [
                 Checkbox(
@@ -152,14 +155,9 @@ class _LoginState extends State<Login> {
               ),
               child: Text(
                 'LOG IN',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                ),
+                style: TextStyle(fontSize: 18, color: Colors.black),
               ),
             ),
-
-            // Hiển thị lỗi nếu có
             if (_errorMessage != null)
               Padding(
                 padding: const EdgeInsets.only(top: 10),
@@ -168,11 +166,9 @@ class _LoginState extends State<Login> {
                   style: TextStyle(color: Colors.red),
                 ),
               ),
-            // Forgot password text
             TextButton(
               onPressed: () {
                 // Xử lý quên mật khẩu
-                
               },
               child: Text('Forgot the password?'),
             ),
@@ -182,7 +178,7 @@ class _LoginState extends State<Login> {
                 Text("Don't have an account? "),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/signup'); // Điều hướng đến trang đăng ký
+                    Navigator.pushNamed(context, '/signup');
                   },
                   child: Text(
                     'Sign Up',
@@ -205,14 +201,7 @@ class _LoginState extends State<Login> {
                     width: 50,
                     height: 50,
                   ),
-                  onPressed: () async {
-                    User? user = await _signInWithGoogle();
-                    if (user != null) {
-                      Navigator.pushReplacementNamed(context, '/home');
-                    } else {
-                      print('Đăng nhập thất bại');
-                    }
-                  },
+                  onPressed: _signInWithGoogle,
                 ),
               ],
             ),

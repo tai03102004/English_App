@@ -16,6 +16,8 @@ class _SignUpState extends State<SignUp> {
   String? _errorMessage;
 
   bool _isLoading = false;
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
 
   void _signUp() async {
     if (_emailController.text.isEmpty ||
@@ -54,9 +56,6 @@ class _SignUpState extends State<SignUp> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-
-      // Optionally, save user data to Firestore or other services here
-      // await FirebaseFirestore.instance.collection('users').doc(userCredential.user?.uid).set({});
 
       Navigator.pushReplacementNamed(context, '/home');
     } on FirebaseAuthException catch (e) {
@@ -114,21 +113,43 @@ class _SignUpState extends State<SignUp> {
             SizedBox(height: 20),
             TextField(
               controller: _passwordController,
-              obscureText: true,
+              obscureText: !_isPasswordVisible,
               decoration: InputDecoration(
                 labelText: 'Password',
                 prefixIcon: Icon(Icons.lock),
                 border: OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
+                ),
               ),
             ),
             SizedBox(height: 20),
             TextField(
               controller: _confirmPasswordController,
-              obscureText: true,
+              obscureText: !_isConfirmPasswordVisible,
               decoration: InputDecoration(
                 labelText: 'Re-enter Password',
                 prefixIcon: Icon(Icons.lock),
                 border: OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isConfirmPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                    });
+                  },
+                ),
               ),
             ),
             SizedBox(height: 10),
@@ -179,3 +200,4 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+
