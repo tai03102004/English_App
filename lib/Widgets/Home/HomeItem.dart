@@ -9,7 +9,7 @@ class HomeItem extends StatefulWidget {
   // ignore: library_private_types_in_public_api
   _HomeItem createState() => _HomeItem();
 }
-
+///hello
 class _HomeItem extends State<HomeItem> {
   @override
   Widget build(BuildContext context) {
@@ -142,6 +142,7 @@ class _HomeItem extends State<HomeItem> {
                     width: 83,
                     height: 83,
                     // fit: BoxFit.cover,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ],

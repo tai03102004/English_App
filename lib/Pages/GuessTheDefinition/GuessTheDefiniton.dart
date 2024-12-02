@@ -16,40 +16,59 @@ class _GuessthedefinitonState extends State<Guessthedefiniton> {
   late String currentDefinition;
   bool _isAnswered = false;
   int numOfCorrectAnswers = 0;
+  int numOfIncorrectAnswers = 0;
   int currentIndex = 0;
-  void loadWord(){
+  String? feedbackMessage;
+
+  void loadWord() {
     currentWord = widget.words[currentIndex]['word']!;
     currentDefinition = widget.words[currentIndex]['definition']!;
-  }
-  void _checkAnswer(){
-    setState(() {
-      _isAnswered = true;
+      feedbackMessage = null;
 
+
+  }
+
+  void _checkAnswer() {
+    setState(() {
+      //_isAnswered = true;
+      if (_controller.text.trim().toLowerCase() == currentWord.toLowerCase()) {
+        feedbackMessage = "✅ Correct! Well done!";
+        numOfCorrectAnswers++;
+      } else {
+        feedbackMessage = "❌ Incorrect. The correct word was: $currentWord";
+        numOfIncorrectAnswers++;
+      }
     });
-    Future.delayed(Duration(microseconds: 500),(){
-      if(currentIndex< widget.words.length-1){
+    Future.delayed(Duration(seconds: 2), () {
+      if (currentIndex < widget.words.length - 1) {
         setState(() {
           currentIndex++;
-          if(_controller.text.toLowerCase() == currentWord.toLowerCase()){
-            numOfCorrectAnswers++;
-          }
           loadWord();
           _controller.clear();
+          //_isAnswered = false;
         });
-      } else{
+      } else {
         showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (context) => AlertDialog(
             title: Text("🎉 Quiz Complete!"),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "You've answered $numOfCorrectAnswers out of ${widget.words.length} correctly.",
+                  "You've completed the quiz!",
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
-                //Image.asset("assets/congrats.png", height: 100),
+                SizedBox(height: 10),
+                Text(
+                  "Correct Answers: $numOfCorrectAnswers",
+                  style: TextStyle(color: Colors.green, fontSize: 18),
+                ),
+                Text(
+                  "Incorrect Answers: $numOfIncorrectAnswers",
+                  style: TextStyle(color: Colors.red, fontSize: 18),
+                ),
               ],
             ),
             actions: [
@@ -58,7 +77,20 @@ class _GuessthedefinitonState extends State<Guessthedefiniton> {
                   Navigator.pop(context);
                   Navigator.pop(context);
                 },
-                child: Text("OK"),
+                child: Text("Thoát"),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  setState(() {
+                    currentIndex = 0;
+                    numOfCorrectAnswers = 0;
+                    numOfIncorrectAnswers = 0;
+                    loadWord();
+                    _controller.clear();
+                  });
+                },
+                child: Text("Restart"),
               ),
             ],
           ),
@@ -66,11 +98,22 @@ class _GuessthedefinitonState extends State<Guessthedefiniton> {
       }
     });
   }
+
   @override
   void initState() {
     super.initState();
+    _controller.addListener(() {
+      setState(() {}); // Trigger UI updates
+    });
     loadWord();
   }
+
+  @override
+  void dispose() {
+    _controller.dispose(); // Clean up controller resources
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,39 +132,79 @@ class _GuessthedefinitonState extends State<Guessthedefiniton> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             LinearPercentIndicator(
-              lineHeight: 8.0,
+              lineHeight: 15.0,
               percent: (numOfCorrectAnswers) / widget.words.length,
               progressColor: Colors.greenAccent,
               backgroundColor: Colors.grey.shade300,
               animation: true,
-              animationDuration: 0,
+              animationDuration: 500,
+              center: Text(
+                "${((currentIndex / widget.words.length) * 100).toInt()}%",
+                style: TextStyle(fontSize: 10, color: Colors.black),
+              ),
             ),
-            Text('Từ này có nghĩa là gì '),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
+            Text(
+              'Từ này có nghĩa là gì? ',
+              style: TextStyle(
+                color: Colors.brown,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
             Text(
               currentDefinition,
               style: TextStyle(
                 fontFamily: 'Rubik',
-                fontSize: 30,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
-                color: Colors.brown,
+                color: Colors.teal,
               ),
+              textAlign: TextAlign.center,
             ),
+            SizedBox(height: 30),
             TextField(
               controller: _controller,
               decoration: InputDecoration(
-                hintText: "Type the definition here",
+                hintText: "Nhập từ tiếng Anh...",
                 border: OutlineInputBorder(),
+                filled: true,
+                fillColor: Colors.grey.shade100,
               ),
             ),
             SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _checkAnswer,
-              child: Text("Submit"),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: _controller.text.isNotEmpty
+                  ? _checkAnswer // Enable only when text is entered and not answered
+                  : null, // Disable button
+              icon: Icon(Icons.check),
+              label: Text("Check Answer"),
             ),
-
-
-
+            SizedBox(height: 20),
+            if (feedbackMessage != null)
+              Text(
+                feedbackMessage!,
+                style: TextStyle(
+                  color: feedbackMessage!.startsWith("✅")
+                      ? Colors.green
+                      : Colors.red,
+                  fontSize: 18,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            Spacer(),
+            Text(
+              "Correct: $numOfCorrectAnswers   Incorrect: $numOfIncorrectAnswers",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey.shade800,
+              ),
+            ),
           ],
         ),
       ),

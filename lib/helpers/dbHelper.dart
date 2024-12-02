@@ -53,7 +53,8 @@ class DatabaseHelper {
     try {
       // Access the file from assets
       final String fileContent =
-      await rootBundle.loadString('assets/data/$topic.txt');
+      //await rootBundle.loadString('assets/data/$topic.txt');
+      await rootBundle.loadString('assets/data/demo.txt');
       List<String> lines = fileContent.split('\n');
 
       for (var line in lines) {
