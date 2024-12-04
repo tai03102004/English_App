@@ -17,125 +17,159 @@ class _UserProfilePage extends State<UserProfilePage>
   Widget build(BuildContext context) {
     AppSizes().init(context);
 
-    // Lấy thông tin từ arguments nếu có
     final arguments = ModalRoute.of(context)?.settings.arguments as Map?;
     final String? userName = arguments?['name'] ?? user?.displayName ?? 'User';
     final String? userPhotoUrl = arguments?['photoUrl'] ?? user?.photoURL;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          // Header Section
-          Container(
-            padding: const EdgeInsets.all(20),
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: userPhotoUrl != null
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      // Điều hướng đến trang cài đặt
+                    },
+                    icon: const Icon(Icons.settings),
+                    iconSize: 40,
+                    color: Color(0xFF000000),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: 150,
+                height: 150,
+                child: Image(
+                  image: userPhotoUrl != null
                       ? NetworkImage(userPhotoUrl)
                       : AssetImage('assets/images/avatar.png') as ImageProvider,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                userName!,
+                style: const TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: 180,
+                height: 56,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF000000),
+                    side: BorderSide.none,
+                    shape: const StadiumBorder(),
+                  ),
+                  child: Row(
                     children: [
-                      Text(
-                        userName!,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      const Icon(
+                        Icons.edit,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(width: 8),
+                      const Text(
+                        "Edit profile",
+                        style: TextStyle(
+                          color: Color(0xFFffffff),
+                          fontSize: 17,
                         ),
                       ),
                     ],
                   ),
                 ),
-                // Nút cài đặt ở góc trên bên phải
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: () {
-                    // Điều hướng đến trang cài đặt
-                  },
-                  iconSize: 30,
-                  color: Colors.black,
-                ),
-              ],
+              ),
+              const SizedBox(height: 30),
+              const Divider(),
+              const SizedBox(height: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Thống kê',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  StatCard(
+                    title: 'Tổng Units đã học',
+                    value: '0',
+                  ),
+                  const SizedBox(height: 10),
+                  StatCard(
+                    title: 'Tổng Words đã học',
+                    value: '0',
+                  ),
+                  const SizedBox(height: 10),
+                  StatCard(
+                    title: 'Ngày học',
+                    value: '0',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+}
+
+class StatCard extends StatelessWidget {
+  final String title;
+  final String value;
+
+  const StatCard({required this.title, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Color(0xFFD3b591),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(width:30),
+          Text(
+            value,
+            style: const TextStyle(
+              color: Colors.red,
+              fontSize: 27,
+              fontWeight: FontWeight.bold,
             ),
           ),
 
-          // Thống kê Section
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            color: Colors.white,
-            child: Column(
-              children: [
-                Text(
-                  'Thống kê',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                // Thêm các thống kê của người dùng vào đây
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildStatCard('Ngày học', '45', Colors.orange),
-                    _buildStatCard('Điểm XP', '1230', Colors.blue),
-                    _buildStatCard('Thành tích', '8', Colors.purple),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                // Nút "Thêm bạn bè"
-                ElevatedButton.icon(
-                  onPressed: () {
-                    // Xử lý thêm bạn bè
-                  },
-                  icon: const Icon(Icons.person_add, color: Colors.black), // Icon add friend
-                  label: const Text(
-                    'THÊM BẠN BÈ',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white, // Nền trắng
-                    side: const BorderSide(color: Colors.black), // Viền đen
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8), // Hình dạng vuông
-                    ),
-                  ),
-                ),
-              ],
+          const SizedBox(width: 40),
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 26,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],
       ),
     );
   }
-
-  Widget _buildStatCard(String title, String value, Color color) {
-    return Column(
-      children: [
-        Text(
-          value,
-          style: TextStyle(
-            color: color,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 5),
-        Text(
-          title,
-          style: const TextStyle(fontSize: 16),
-        ),
-      ],
-    );
-  }
 }
+
