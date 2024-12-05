@@ -6,6 +6,8 @@ import 'package:app/Widgets/Home/Level_Home.dart';
 import 'package:app/Widgets/Home/HomeItem.dart';
 import 'package:flutter/material.dart';
 
+import '../../Widgets/Home/HomeItem2.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -41,8 +43,8 @@ class _HomePageState extends State<HomePage>
               child: CustomScrollView(
                 slivers: [
                   Home_Header(),
-                  LevelHome(),
-                  HomeItem(),
+                  //LevelHome(),
+                  HomeItem2(),
                 ],
               ),
             ),
