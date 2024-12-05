@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage>
               child: CustomScrollView(
                 slivers: [
                   Home_Header(),
-                  LevelHome(),
+                  //LevelHome(),
                   HomeItem2(),
                 ],
               ),

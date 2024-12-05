@@ -1,5 +1,7 @@
 import 'package:app/Data/Home/data_home.dart';
 import 'package:app/Definitons/size_config.dart';
+import 'package:app/Widgets/Home/Level_Home.dart';
+import 'package:app/Widgets/Home/Topics/Topics.dart';
 import 'package:flutter/material.dart';
 
 class HomeItem2 extends StatefulWidget {
@@ -36,6 +38,7 @@ class _HomeItem2 extends State<HomeItem2> {
                 //     textAlign: TextAlign.center,
                 //   ),
                 // ),
+                LevelHome(level: level),
                 Expanded(
                   child: ListView.builder(
                     itemCount: levels[level]!.length,
@@ -43,7 +46,8 @@ class _HomeItem2 extends State<HomeItem2> {
                       var topic = levels[level]![topicIndex];
                       return GestureDetector(
                         onTap: () {
-                          // Navigate to the topic page or perform another action
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => Topic(topic: topic['title'])));
                         },
                         child: Container(
                           height: 100,
