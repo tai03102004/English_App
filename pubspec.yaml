@@ -12,10 +12,18 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #Firebase
   firebase_core: ^3.8.0
   firebase_auth: ^5.0.0
+  firebase_storage: ^12.3.7
   cloud_firestore: ^5.5.0
   google_sign_in: ^5.4.3
+
+  #Icon
+  line_awesome_flutter: ^1.0.2
+
+  #Image
+  image_picker: ^0.8.8+7
 
   english_words: ^4.0.0
   provider: ^6.0.0

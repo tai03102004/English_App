@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 
 import 'Pages/Auth/Login.dart';
 import 'Pages/Auth/SignUp.dart';
+import 'Pages/Profile/UserProfilePage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

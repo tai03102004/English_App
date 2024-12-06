@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -85,26 +86,20 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(LineAwesomeIcons.angle_left),
+        ),
+        title: const Text('Log In'),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                SizedBox(width: 10),
-                Text(
-                  'Login',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
-                ),
-              ],
-            ),
             SizedBox(height: 30),
             Image.asset('assets/images/capy_login.png', height: 180),
             SizedBox(height: 30),
@@ -112,7 +107,7 @@ class _LoginState extends State<Login> {
               controller: _emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: Icon(LineAwesomeIcons.envelope),
                 border: OutlineInputBorder(),
               ),
             ),
@@ -122,10 +117,10 @@ class _LoginState extends State<Login> {
               controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: Icon(LineAwesomeIcons.lock),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _obscureText ? Icons.visibility_off : Icons.visibility,
+                    _obscureText ? LineAwesomeIcons.eye_slash : LineAwesomeIcons.eye,
                   ),
                   onPressed: _togglePasswordVisibility,
                 ),
@@ -137,6 +132,7 @@ class _LoginState extends State<Login> {
               children: [
                 Checkbox(
                   value: _isRememberMeChecked,
+                  checkColor: Color(0xFFd3b591),
                   onChanged: (bool? value) {
                     setState(() {
                       _isRememberMeChecked = value ?? false;

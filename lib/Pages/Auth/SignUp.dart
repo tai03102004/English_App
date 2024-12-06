@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -76,29 +77,20 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(LineAwesomeIcons.angle_left),
+        ),
+        title: const Text('Sign Up'),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context); // Go back to the previous screen
-                  },
-                ),
-                SizedBox(width: 10),
-                Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ],
-            ),
             SizedBox(height: 20),
             Image.asset('assets/images/capy_signup.png', height: 150),
             SizedBox(height: 20),
@@ -106,7 +98,7 @@ class _SignUpState extends State<SignUp> {
               controller: _emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: Icon(LineAwesomeIcons.envelope),
                 border: OutlineInputBorder(),
               ),
             ),
@@ -116,11 +108,11 @@ class _SignUpState extends State<SignUp> {
               obscureText: !_isPasswordVisible,
               decoration: InputDecoration(
                 labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: Icon(LineAwesomeIcons.lock),
                 border: OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                    _isPasswordVisible ? LineAwesomeIcons.eye : LineAwesomeIcons.eye_slash,
                   ),
                   onPressed: () {
                     setState(() {
@@ -135,14 +127,14 @@ class _SignUpState extends State<SignUp> {
               controller: _confirmPasswordController,
               obscureText: !_isConfirmPasswordVisible,
               decoration: InputDecoration(
-                labelText: 'Re-enter Password',
-                prefixIcon: Icon(Icons.lock),
+                labelText: 'Re-password',
+                prefixIcon: Icon(LineAwesomeIcons.lock),
                 border: OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _isConfirmPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
+                        ? LineAwesomeIcons.eye
+                        : LineAwesomeIcons.eye_slash,
                   ),
                   onPressed: () {
                     setState(() {
@@ -160,15 +152,15 @@ class _SignUpState extends State<SignUp> {
               ),
             SizedBox(height: 30),
             ElevatedButton(
-              onPressed: _isLoading ? null : _signUp, // Disable button while loading
+              onPressed: _isLoading ? null : _signUp,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFD3B591),
                 minimumSize: Size(double.infinity, 50),
               ),
               child: _isLoading
-                  ? CircularProgressIndicator(color: Colors.white) // Show loading spinner
+                  ? CircularProgressIndicator(color: Colors.white)
                   : Text(
-                'SIGN UP',
+                'SIGN IN',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.black,
@@ -185,7 +177,7 @@ class _SignUpState extends State<SignUp> {
                     Navigator.pushNamed(context, '/login'); // Navigate to login page
                   },
                   child: Text(
-                    'Log In',
+                    'LOG IN',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.blue,
