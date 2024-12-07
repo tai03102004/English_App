@@ -21,8 +21,8 @@ final List<Widget> pages = <Widget>[
   Topic(topic: 'Nature'),
 ];
 final List<String> images = <String>[
-  'assets/images/home/animal.png',
-  'assets/images/home/street.png',
+  'assets/images/home/animals.png',
+  'assets/images/home/transportation.png',
   'assets/images/home/alphabet.png',
   'assets/images/home/park.png'
 ];
@@ -37,12 +37,12 @@ final Map<int, List<Map<String, dynamic>>> levels = {
   1: [
     {
       'title': 'Animals',
-      'image': 'assets/images/home/animal.png',
+      'image': 'assets/images/home/animals.png',
       'color': Color(0xFFA1D7FF)
     },
     {
       'title': 'Transportation',
-      'image': 'assets/images/home/street.png',
+      'image': 'assets/images/home/transportation.png',
       'color': Color(0xFF6AFF5D)
     },
     {
@@ -52,7 +52,7 @@ final Map<int, List<Map<String, dynamic>>> levels = {
     },
     {
       'title': 'Nature',
-      'image': 'assets/images/home/park.png',
+      'image': 'assets/images/home/nature.png',
       'color': Color(0xFFFF8D8D)
     },
   ],

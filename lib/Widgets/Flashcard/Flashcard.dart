@@ -60,17 +60,17 @@ class _FlashcardListState extends State<FlashcardList> {
         : Container(
             //color: Colors.brown,
             height: 400,
-            decoration: BoxDecoration(
-              color: Colors.brown,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 6,
-                  offset: Offset(0, 4),
-                ),
-              ],
-            ),
+            // decoration: BoxDecoration(
+            //   //color: Colors.brown,
+            //   //borderRadius: BorderRadius.circular(12),
+            //   // boxShadow: [
+            //   //   BoxShadow(
+            //   //     color: Colors.black26,
+            //   //     blurRadius: 6,
+            //   //     offset: Offset(0, 4),
+            //   //   ),
+            //   // ],
+            // ),
             child: PageView.builder(
               itemCount: words.length,
               itemBuilder: (context, index) {
