@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:app/Definitons/Color.dart';
 import 'package:app/helpers/DotsIndicator.dart';
 
-class LevelHome extends StatefulWidget {
-  int level;
-  LevelHome({required this.level});
-  //const LevelHome({super.key});
+class LevelHome extends StatelessWidget {
+  final int currentLevel;
+  final Function(int) onDotTap;
 
-  @override
-  _LevelHome createState() => _LevelHome();
-}
+  const LevelHome({required this.currentLevel, required this.onDotTap});
 
-class _LevelHome extends State<LevelHome> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,28 +24,25 @@ class _LevelHome extends State<LevelHome> {
                 height: 24,
               ),
               const SizedBox(width: 10),
-              Text(
+              const Text(
                 "Level",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 16, // Kích thước chữ rõ ràng hơn
-                  color: sectionColors[
-                      'textPrimary'], // Màu sắc có thể tùy chỉnh
+                  fontSize: 16,
                 ),
               ),
               const SizedBox(width: 5),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: sectionColors['sidebar'], // Màu cho level box
+                  color: Colors.grey.shade300,
                 ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                 child: Text(
-                  "${widget.level}",
-                  style: TextStyle(
+                  "${currentLevel + 1}", // Display current level (1-based index)
+                  style: const TextStyle(
                     fontSize: 10,
-                    color: sectionColors['bg_white'],
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -57,10 +50,10 @@ class _LevelHome extends State<LevelHome> {
           ),
           const SizedBox(height: 10),
           DotsIndicator(
-            currentIndex: widget.level - 1,
+            currentIndex: currentLevel,
             totalDots: 6,
+            onDotTap: onDotTap, // Call back when a dot is tapped
           ),
-          const SizedBox(height: 20),
         ],
       ),
     );

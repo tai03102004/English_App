@@ -61,7 +61,7 @@ class _HomeSliderState extends State<HomeSlider> {
           height: 10,
         ),
         DotsIndicator(
-            currentIndex: normalizePageIndex(_pageIndex), totalDots: 8),
+            currentIndex: normalizePageIndex(_pageIndex), totalDots: 8,onDotTap: null ,),
       ],
     ));
   }

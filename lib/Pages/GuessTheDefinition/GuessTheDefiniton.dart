@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -14,8 +13,7 @@ class Guessthedefiniton extends StatefulWidget {
   State<Guessthedefiniton> createState() => _GuessthedefinitonState();
 }
 
-class _GuessthedefinitonState extends State<Guessthedefiniton>
-    with SingleTickerProviderStateMixin {
+class _GuessthedefinitonState extends State<Guessthedefiniton> {
   final TextEditingController _controller = TextEditingController();
   late String currentWord;
   late String currentDefinition;
@@ -23,49 +21,21 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
   String? feedbackMessage;
   int numOfCorrectAnswers = 0;
   int numOfIncorrectAnswers = 0;
-  // int timer = 30; // Countdown timer for each question
-  // Timer? _timer;
-  int highScore = 0; // Track high score
-  bool isHintUsed = false;
-  AnimationController? _animationController;
 
   // Load the current word and definition
   void loadWord() {
     currentWord = widget.words[currentIndex]['word']!;
     currentDefinition = widget.words[currentIndex]['definition']!;
     feedbackMessage = null;
-    isHintUsed = false;
-    //startTimer();
+    _controller.clear();
   }
-
-  // Start or restart the timer
-  // void startTimer() {
-  //   //_timer?.cancel();
-  //   setState(() {
-  //     timer = 30;
-  //   });
-  //   _animationController?.forward(from: 0.0);
-  //   _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-  //     if (timer > 0) {
-  //       setState(() {
-  //         timer--;
-  //       });
-  //     } else {
-  //       t.cancel();
-  //       _skipQuestion(autoSkipped: true);
-  //     }
-  //   });
-  //}
 
   // Check if the answer is correct
   void _checkAnswer() {
-    //_timer?.cancel();
-   // _animationController?.stop();
     setState(() {
       if (_controller.text.trim().toLowerCase() == currentWord.toLowerCase()) {
         feedbackMessage = "✅ Chính xác!";
         numOfCorrectAnswers++;
-        highScore = numOfCorrectAnswers > highScore ? numOfCorrectAnswers : highScore;
       } else {
         feedbackMessage = "❌ Sai rồi, đáp án là: $currentWord";
         numOfIncorrectAnswers++;
@@ -77,7 +47,6 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
         setState(() {
           currentIndex++;
           loadWord();
-          _controller.clear();
         });
       } else {
         _showCompletionDialog();
@@ -86,18 +55,13 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
   }
 
   // Skip question logic
-  void _skipQuestion({bool autoSkipped = false}) {
-    //_timer?.cancel();
-    _animationController?.stop();
+  void _skipQuestion() {
     setState(() {
-      if (autoSkipped) {
-        feedbackMessage = "⏳ Hết giờ! Đáp án là: $currentWord";
-        numOfIncorrectAnswers++;
-      }
+      feedbackMessage = "⏩ Đã bỏ qua! Đáp án là: $currentWord";
+      numOfIncorrectAnswers++;
       if (currentIndex < widget.words.length - 1) {
         currentIndex++;
         loadWord();
-        _controller.clear();
       } else {
         _showCompletionDialog();
       }
@@ -106,8 +70,6 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
 
   // Show completion dialog
   void _showCompletionDialog() {
-    //_timer?.cancel();
-    _animationController?.dispose();
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -125,10 +87,6 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
-            Text(
-              "Điểm cao nhất: $highScore",
-              style: const TextStyle(color: Colors.teal, fontSize: 18),
-            ),
             Text(
               "Đúng: $numOfCorrectAnswers",
               style: const TextStyle(color: Colors.green, fontSize: 18),
@@ -155,7 +113,6 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
                 numOfCorrectAnswers = 0;
                 numOfIncorrectAnswers = 0;
                 loadWord();
-                _controller.clear();
               });
             },
             child: const Text("Học lại"),
@@ -168,7 +125,6 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
   // Reveal a hint
   void _useHint() {
     setState(() {
-      isHintUsed = true;
       feedbackMessage = "Gợi ý: ${currentWord.substring(0, 1)}...";
     });
   }
@@ -176,27 +132,11 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
-      setState(() {}); // Trigger UI updates
-    });
-    // _animationController = AnimationController(
-    //   vsync: this,
-    //   duration: Duration(seconds: timer),
-    // );
     loadWord();
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    //_timer?.cancel();
-    _animationController?.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // Background image
     return Scaffold(
       appBar: HomeTopButton(topic: widget.topic),
       body: Container(
@@ -226,30 +166,17 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
                 ),
               ),
               const SizedBox(height: 20),
-              // Timer
-              // CircularPercentIndicator(
-              //   radius: 60.0,
-              //   lineWidth: 8.0,
-              //   percent: timer / 30,
-              //   center: Text(
-              //     "$timer",
-              //     style: const TextStyle(
-              //         fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
-              //   ),
-              //   progressColor: Colors.redAccent,
-              // ),
-              const SizedBox(height: 20),
-              // Question
+              // Question Title
               const Text(
                 'Nghĩa của từ',
                 style: TextStyle(
                   color: Colors.brown,
-                  fontSize: 32, // Slightly larger font size
-                  fontWeight: FontWeight.w800, // Extra bold for emphasis
+                  fontSize: 32,
+                  fontWeight: FontWeight.w800,
                   fontFamily: 'Rubik',
                   shadows: [
                     Shadow(
-                      color: Colors.black12, // Subtle shadow for depth
+                      color: Colors.black12,
                       offset: Offset(2, 2),
                       blurRadius: 3,
                     ),
@@ -257,13 +184,13 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
                 ),
                 textAlign: TextAlign.center,
               ),
-
               const SizedBox(height: 10),
+              // Current Definition
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 20),
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF5E8D0), // Soft beige background
+                  color: const Color(0xFFF5E8D0),
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
@@ -277,10 +204,10 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
                   currentDefinition,
                   style: const TextStyle(
                     fontFamily: 'Rubik',
-                    fontSize: 26, // Larger font for focus
+                    fontSize: 26,
                     color: Colors.teal,
                     fontWeight: FontWeight.w600,
-                    letterSpacing: 1.2, // Slight spacing for elegance
+                    letterSpacing: 1.2,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -289,10 +216,10 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
               // Input Field
               TextField(
                 controller: _controller,
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   hintText: "Nhập từ tiếng Anh...",
-                  hintStyle: TextStyle(fontSize: 18),
+                  hintStyle: const TextStyle(fontSize: 18),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -313,14 +240,14 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
                     textColor: Colors.white,
                   ),
                   _buildThemedButton(
-                    onPressed: isHintUsed ? null : _useHint,
+                    onPressed: _useHint,
                     icon: Icons.lightbulb,
                     label: "Gợi ý",
                     backgroundColor: const Color(0xFFF3B044), // Golden Sand
                     textColor: Colors.black,
                   ),
                   _buildThemedButton(
-                    onPressed: () => _skipQuestion(autoSkipped: false),
+                    onPressed: _skipQuestion,
                     icon: Icons.skip_next,
                     label: "Bỏ qua",
                     backgroundColor: const Color(0xFFED66C9), // Dusty Rose
@@ -342,7 +269,8 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
                   ),
                   textAlign: TextAlign.center,
                 ),
-              // Spacer(),
+              const Spacer(),
+              // Mascot
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,
@@ -357,9 +285,10 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
               Text(
                 "Đúng: $numOfCorrectAnswers   Sai: $numOfIncorrectAnswers",
                 style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey.shade800,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 16,
+                  color: Colors.grey.shade800,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
@@ -367,6 +296,8 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
       ),
     );
   }
+
+  // Helper for Buttons
   Widget _buildThemedButton({
     required VoidCallback? onPressed,
     required IconData icon,
@@ -379,10 +310,10 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
         backgroundColor: backgroundColor,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16), // Modern rounded edges
+          borderRadius: BorderRadius.circular(16),
         ),
-        shadowColor: Colors.black.withOpacity(0.2), // Subtle shadow
-        elevation: 4, // Adds a slight "floating" effect
+        shadowColor: Colors.black.withOpacity(0.2),
+        elevation: 4,
       ),
       onPressed: onPressed,
       icon: Icon(
@@ -396,7 +327,7 @@ class _GuessthedefinitonState extends State<Guessthedefiniton>
           color: textColor,
           fontSize: 16,
           fontWeight: FontWeight.bold,
-          letterSpacing: 1.2, // Slight letter spacing for elegance
+          letterSpacing: 1.2,
         ),
       ),
     );

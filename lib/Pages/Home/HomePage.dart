@@ -12,23 +12,17 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  double xPosition = 100;
-  double yPosition = 100;
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    AppSizes().init(context);
-
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF7C72E5),
-        elevation: 0, // Tùy chọn để xóa bóng đổ
-        flexibleSpace: Info(
+        backgroundColor: const Color(0xFF7C72E5),
+        elevation: 0,
+        flexibleSpace: const Info(
           check: true,
           check_name: true,
         ),
@@ -42,32 +36,35 @@ class _HomePageState extends State<HomePage>
               bottom: false,
               child: CustomScrollView(
                 slivers: [
+                  // Add Home_Header directly if it's already a sliver
                   Home_Header(),
-                  //LevelHome(),
-                  HomeItem2(),
+                  // Ensure HomeItem2 is wrapped correctly
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: HomeItem2(),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
           Positioned(
-            left: xPosition,
-            top: yPosition,
+            left: 100,
+            top: 100,
             child: GestureDetector(
               onPanUpdate: (details) {
-                // Update the position of the icon based on user drag
-                setState(() {
-                  xPosition += details.delta.dx;
-                  yPosition += details.delta.dy;
-                });
+                // Handle draggable icon logic
               },
               child: GestureDetector(
-                onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Dictionary()));
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Dictionary()));
                 },
                 child: Container(
                   width: 60,
                   height: 60,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.green,
                   ),
