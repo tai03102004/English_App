@@ -6,6 +6,7 @@ import 'package:app/Widgets/Home/Level_Home.dart';
 import 'package:app/Widgets/Home/HomeItem.dart';
 import 'package:flutter/material.dart';
 
+import '../../Widgets/Dictionary/FloatingDictionaryButton.dart';
 import '../../Widgets/Home/HomeItem2.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,34 +50,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Positioned(
-            left: 100,
-            top: 100,
-            child: GestureDetector(
-              onPanUpdate: (details) {
-                // Handle draggable icon logic
-              },
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Dictionary()));
-                },
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.green,
-                  ),
-                  child: const Icon(
-                    Icons.search,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // FloatingDictionaryButton(
+          //   onTap: () {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(builder: (context) => const Dictionary()),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:app/Definitons/Color.dart';
 import 'package:app/helpers/DotsIndicator.dart';
 
+import '../Dictionary/Dictionary.dart';
+import '../Dictionary/FloatingDictionaryButton.dart';
+
 class LevelHome extends StatelessWidget {
   final int currentLevel;
   final Function(int) onDotTap;
@@ -46,7 +49,15 @@ class LevelHome extends StatelessWidget {
                   ),
                 ),
               ),
+              // FloatingDictionaryButton(
+              //   onTap: () {
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute(builder: (context) => const Dictionary()),
+              //     );
+              //   },
+              // ),
             ],
+
           ),
           const SizedBox(height: 10),
           DotsIndicator(
