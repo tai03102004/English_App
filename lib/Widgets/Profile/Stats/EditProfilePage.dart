@@ -43,7 +43,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             .child('profile_pictures')
             .child('${DateTime.now().millisecondsSinceEpoch}.jpg');
         await ref.putFile(File(image.path)); // Tải ảnh lên Firebase Storage
-        final imageUrl = await ref.getDownloadURL(); // Lấy URL ảnh sau khi tải lên thành công
+        final imageUrl = await ref.getDownloadURL();
 
         setState(() {
           _photoUrl = imageUrl; // Cập nhật ảnh
@@ -59,19 +59,25 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Future<void> _saveProfile() async {
     if (_formKey.currentState!.validate()) {
       try {
-        // Cập nhật tên
+        // Cập nhật tên và ảnh
         await user?.updateDisplayName(_nameController.text);
-
-        // Cập nhật ảnh đại diện
         if (_photoUrl != null) {
           await user?.updatePhotoURL(_photoUrl);
         }
 
+        // Làm mới thông tin người dùng
+        await FirebaseAuth.instance.currentUser?.reload();
+        final updatedUser = FirebaseAuth.instance.currentUser;
+
+        // Trả kết quả về UserProfilePage
+        Navigator.pop(context, {
+          'name': updatedUser?.displayName,
+          'photoUrl': updatedUser?.photoURL,
+        });
+
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Hồ sơ đã được cập nhật thành công.')),
         );
-
-        Navigator.pop(context);
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Lỗi: $e')),

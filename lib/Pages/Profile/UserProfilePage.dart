@@ -2,10 +2,13 @@ import 'package:app/Definitons/size_config.dart';
 import 'package:app/Pages/Auth/Login.dart';
 import 'package:app/Pages/Auth/SignUp.dart';
 import 'package:app/Widgets/Profile/Stats/EditProfilePage.dart';
+import 'package:app/Widgets/Profile/Stats/FeedbackForm.dart';
 import 'package:app/Widgets/Profile/Stats/SettingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+import '../../Widgets/Profile/Stats/SupportPage.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({super.key});
@@ -14,17 +17,31 @@ class UserProfilePage extends StatefulWidget {
   _UserProfilePage createState() => _UserProfilePage();
 }
 
-class _UserProfilePage extends State<UserProfilePage>
-    with SingleTickerProviderStateMixin {
+class _UserProfilePage extends State<UserProfilePage> with SingleTickerProviderStateMixin {
   final User? user = FirebaseAuth.instance.currentUser;
+  String? userName;
+  String? userPhotoUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    userName = user?.displayName ?? 'Capybara';
+    userPhotoUrl = user?.photoURL;
+  }
+
+  // Làm mới dữ liệu người dùng từ Firebase
+  Future<void> _refreshUserData() async {
+    await user?.reload();
+    final refreshedUser = FirebaseAuth.instance.currentUser;
+    setState(() {
+      userName = refreshedUser?.displayName ?? 'Capybara';
+      userPhotoUrl = refreshedUser?.photoURL;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     AppSizes().init(context);
-
-    final arguments = ModalRoute.of(context)?.settings.arguments as Map?;
-    final String? userName = arguments?['name'] ?? user?.displayName ?? 'Capybara';
-    final String? userPhotoUrl = arguments?['photoUrl'] ?? user?.photoURL;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -37,19 +54,12 @@ class _UserProfilePage extends State<UserProfilePage>
                 width: 130,
                 height: 130,
                 child: Container(
-                  // decoration: BoxDecoration(
-                  //   borderRadius: BorderRadius.circular(25),
-                  //   border: Border.all(
-                  //     color: Colors.black,
-                  //     width: 3,
-                  //   ),
-                  // ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(25),
                     child: Image(
                       image: userPhotoUrl != null
-                          ? NetworkImage(userPhotoUrl)
-                          : AssetImage('assets/images/avatar_default.jpeg') as ImageProvider,
+                          ? NetworkImage(userPhotoUrl!)
+                          : const AssetImage('assets/images/avatar_default.jpeg') as ImageProvider,
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -57,9 +67,7 @@ class _UserProfilePage extends State<UserProfilePage>
                   ),
                 ),
               ),
-
               const SizedBox(height: 20),
-
               Text(
                 userName!,
                 style: const TextStyle(
@@ -67,24 +75,26 @@ class _UserProfilePage extends State<UserProfilePage>
                   fontWeight: FontWeight.bold,
                 ),
               ),
-
               const SizedBox(height: 50),
               const Divider(),
               const SizedBox(height: 10),
-
               ProfileMenuWidget(
                 title: "Hồ sơ",
                 icon: LineAwesomeIcons.edit,
-                onPress: () {
-                  Navigator.push(
+                onPress: () async {
+                  final result = await Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const EditProfilePage()),
                   );
+                  if (result != null && mounted) {
+                    setState(() {
+                      userName = result['name'] ?? userName;
+                      userPhotoUrl = result['photoUrl'] ?? userPhotoUrl;
+                    });
+                  }
                 },
               ),
-
               const SizedBox(height: 30),
-
               ProfileMenuWidget(
                 title: "Cài đặt",
                 icon: LineAwesomeIcons.cog,
@@ -95,28 +105,32 @@ class _UserProfilePage extends State<UserProfilePage>
                   );
                 },
               ),
-
               const SizedBox(height: 30),
-
               ProfileMenuWidget(
                 title: "Trung tâm trợ giúp",
                 icon: LineAwesomeIcons.headset,
-                onPress: () {},
+                onPress: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SupportPage()),
+                  );
+                },
               ),
-
               const SizedBox(height: 30),
-
               ProfileMenuWidget(
                 title: "Phản hồi",
                 icon: LineAwesomeIcons.comment_dots,
-                onPress: () {},
+                onPress: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FeedbackForm()),
+                  );
+                },
               ),
-
               const SizedBox(height: 30),
-
               ProfileMenuWidget(
                 title: "Đăng xuất",
-                icon: LineAwesomeIcons.alternate_sign_out,
+                icon: Icons.exit_to_app,
                 textColor: Colors.red,
                 endIcon: false,
                 onPress: () {
@@ -132,8 +146,8 @@ class _UserProfilePage extends State<UserProfilePage>
       ),
     );
   }
-
 }
+
 
 class ProfileMenuWidget extends StatelessWidget {
   const ProfileMenuWidget({
