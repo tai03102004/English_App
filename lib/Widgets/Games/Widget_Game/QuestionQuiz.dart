@@ -58,6 +58,7 @@ class _QuestionQuizState extends State<QuestionQuiz> {
                 children: currentQuestion["options"].map<Widget>((option) {
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 8),
+                    width: 200,
                     child: ElevatedButton(
                       onPressed: (quizManager.hasAnswered ||
                               quizManager.isCompleted ||
