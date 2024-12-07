@@ -19,11 +19,10 @@ class _NewsPageState extends State<NewsPage>
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF7C72E5),
+        backgroundColor: Color(0xFF95785E),
         elevation: 0, // Tùy chọn để xóa bóng đổ
+        toolbarHeight: 70.0,
         flexibleSpace: Info(
-          check: true,
-          check_name: true,
         ),
         automaticallyImplyLeading: false,
       ),

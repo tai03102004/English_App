@@ -11,7 +11,7 @@ class Recent extends StatelessWidget {
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Color(0xFFFFB3C0),
+        color: Color(0xFFFFFFFF),
       ),
       child: Row(
         children: [

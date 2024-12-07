@@ -21,12 +21,10 @@ class _HomePageState extends State<HomePage>
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF7C72E5),
+        backgroundColor: Color(0xFF95785E),
         elevation: 0, // Tùy chọn để xóa bóng đổ
-        flexibleSpace: Info(
-          check: true,
-          check_name: true,
-        ),
+        toolbarHeight: 70.0,
+        flexibleSpace: Info(),
         automaticallyImplyLeading: false,
       ),
       body: Container(

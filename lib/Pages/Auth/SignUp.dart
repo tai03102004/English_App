@@ -92,7 +92,7 @@ class _SignUpState extends State<SignUp> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
-            Image.asset('assets/images/capy_signup.png', height: 150),
+            Image.asset('assets/images/capy_signup.png', height: 180),
             SizedBox(height: 20),
             TextField(
               controller: _emailController,

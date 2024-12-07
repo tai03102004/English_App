@@ -80,7 +80,7 @@ class _UserProfilePage extends State<UserProfilePage> with SingleTickerProviderS
               const SizedBox(height: 10),
               ProfileMenuWidget(
                 title: "Hồ sơ",
-                icon: Icons.edit,
+                icon: LineAwesomeIcons.edit,
                 onPress: () async {
                   final result = await Navigator.push(
                     context,

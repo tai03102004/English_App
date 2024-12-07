@@ -1,16 +1,45 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class Info extends StatelessWidget {
-  final bool check;
-  final bool check_name;
-  const Info({super.key, required this.check, required this.check_name});
+// class Info extends StatelessWidget {
+//   final bool check;
+//   final bool check_name;
+//   const Info({super.key, required this.check, required this.check_name});
+
+class Info extends StatefulWidget {
+  const Info({super.key});
+
+  @override
+  _Info createState() => _Info();
+}
+class _Info extends State<Info>  with SingleTickerProviderStateMixin {
+  final User? user = FirebaseAuth.instance.currentUser;
+  String? userName;
+  String? userPhotoUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    userName = user?.displayName ?? 'Capybara';
+    userPhotoUrl = user?.photoURL;
+  }
+
+  // Làm mới dữ liệu người dùng từ Firebase
+  Future<void> _refreshUserData() async {
+    await user?.reload();
+    final refreshedUser = FirebaseAuth.instance.currentUser;
+    setState(() {
+      userName = refreshedUser?.displayName ?? 'Capybara';
+      userPhotoUrl = refreshedUser?.photoURL;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFF7C72E5),
+        color: Color(0xDA805029),
       ),
       child: SafeArea(
         child: Padding(
@@ -44,7 +73,7 @@ class Info extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    check_name ? "Madelyn Dias" : "Your Profile",
+                    userName!,
                     style: TextStyle(
                       fontSize: 22,
                       fontFamily: "Rubik",
@@ -55,16 +84,17 @@ class Info extends StatelessWidget {
                 ],
               ),
               Spacer(),
-              if (check)
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: Colors.transparent,
                   child: CircleAvatar(
                     radius: 25,
-                    backgroundImage:
-                        AssetImage('assets/images/users/avatar.jpg'),
+                    backgroundImage: userPhotoUrl != null
+                        ? NetworkImage(userPhotoUrl!)
+                        : const AssetImage('assets/images/avatar_default.jpeg') as ImageProvider,
                   ),
                 ),
+              SizedBox(width: 15,)
             ],
           ),
         ),

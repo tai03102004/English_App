@@ -1,3 +1,4 @@
+import 'package:app/Components/Header/Header_Genral.dart';
 import 'package:app/Data/IPA/ipa.dart';
 import 'package:app/Pages/Pronunciation/Pronunciation.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,13 @@ class Pronunciation_Topic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("IPA")),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF95785E),
+        elevation: 0,
+        toolbarHeight: 70.0,
+        flexibleSpace: Info(),
+        automaticallyImplyLeading: false,
+      ),
       body: ListView.builder(
         itemCount: ipaSounds.length,
         itemBuilder: (context, index) {

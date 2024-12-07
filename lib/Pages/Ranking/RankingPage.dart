@@ -24,11 +24,10 @@ class _ChampionPage extends State<RankingPage>
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF7C72E5),
+        backgroundColor: Color(0xFF95785E),
         elevation: 0,
+        toolbarHeight: 70.0,
         flexibleSpace: Info(
-          check: false,
-          check_name: true,
         ),
         automaticallyImplyLeading: false,
         actions: [
@@ -36,6 +35,7 @@ class _ChampionPage extends State<RankingPage>
             icon: Icon(
               Icons.more_vert,
               size: 35,
+              color: Colors.white,
             ),
             offset: Offset(0, 40),
             onSelected: (value) {

@@ -12,7 +12,7 @@ class Feature extends StatelessWidget {
     // Các giá trị thường dùng
     const EdgeInsets containerPadding = EdgeInsets.all(25);
     const EdgeInsets containerMargin = EdgeInsets.all(24);
-    const Color backgroundColor = Color.fromARGB(139, 181, 177, 214);
+    const Color backgroundColor = Color(0x99CFB39F);
 
     return Container(
       margin: containerMargin,
@@ -96,7 +96,7 @@ class _FindFriendsButton extends StatelessWidget {
               "Play game",
               style: TextStyle(
                 fontSize: 14,
-                color: Color(0xFF6A5AE0),
+                color: Color(0xFF7A6CE4),
                 fontWeight: FontWeight.w700,
               ),
             ),
