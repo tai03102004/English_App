@@ -40,7 +40,7 @@ class SupportPage extends StatelessWidget {
                       bottom: BorderSide(color: Colors.black),
                     )
                   ),
-                  alignment: ,
+                  // alignment: ,
                 )
               ],
             )
