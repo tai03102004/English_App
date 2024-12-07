@@ -1,3 +1,4 @@
+import 'package:app/Widgets/Dictionary/Word.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:app/helpers/dbHelper.dart';
