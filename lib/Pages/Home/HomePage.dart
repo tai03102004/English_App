@@ -50,13 +50,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          // FloatingDictionaryButton(
-          //   onTap: () {
-          //     Navigator.of(context).push(
-          //       MaterialPageRoute(builder: (context) => const Dictionary()),
-          //     );
-          //   },
-          // ),
+
         ],
       ),
     );
