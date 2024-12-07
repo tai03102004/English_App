@@ -2,10 +2,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import '../../Components/HomeTopButton.dart';
+
 class TestPage extends StatefulWidget {
   final List<Map<String, String>> words;
-
-  TestPage({required this.words});
+  String topic;
+  TestPage({required this.words, required this.topic});
 
   @override
   _TestPageState createState() => _TestPageState();
@@ -98,11 +100,7 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffF7E8D5),
-      appBar: AppBar(
-        title: Text("Kiểm tra từ vựng"),
-        centerTitle: true,
-        backgroundColor: Color(0xffF76C6C),
-      ),
+      appBar: HomeTopButton(topic: widget.topic),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

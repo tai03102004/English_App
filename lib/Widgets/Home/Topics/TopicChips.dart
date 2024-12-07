@@ -16,79 +16,128 @@ class TopicChips extends StatelessWidget {
   Widget build(BuildContext context) {
     // Flatten levels map into a list of unique topics excluding the current topic
     final currentLevel = levels.entries.firstWhere(
-      (entry) => entry.value.any((topic) => topic['title'] == currentTopic),
+          (entry) => entry.value.any((topic) => topic['title'] == currentTopic),
       orElse: () => MapEntry(0, []),
     );
 
-// Filter topics within the same level excluding the current topic
+    // Filter topics within the same level excluding the current topic
     final filteredTopics = currentLevel.value
         .where((topic) => topic['title'] != currentTopic)
         .toList();
 
     return SliverToBoxAdapter(
-        child: Container(
-      decoration: BoxDecoration(
-        color: Colors.brown.shade100,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.brown.shade200,
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildSectionHeader(),
+            const SizedBox(height: 16),
+            Center(
+              child: Wrap(
+                spacing: 16,
+                runSpacing: 16,
+                children: filteredTopics.map((topic) {
+                  return _buildTopicChip(
+                    topic['title'],
+                    Icons.topic, // You can customize icons based on the topic
+                    context,
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
       ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    );
+  }
+
+  // Builds the section header
+  Widget _buildSectionHeader() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
         Text(
           "Các chủ đề khác",
           style: TextStyle(
-            color: Colors.brown,
-            fontSize: 22,
+            color: Colors.brown.shade800,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 16),
-        Center(
-          child: Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: filteredTopics.map((topic) {
-              return GestureDetector(
-                child: _buildTopicChip(topic['title']),
-                onTap: () {
-                  // Handle chip tap, for example, navigate to a new screen with the selected topic
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Topic(topic: topic['title'])));
-                  print("Tapped on topic: ${topic['title']}");
-                },
-              );
-            }).toList(),
+        const SizedBox(height: 4),
+        Container(
+          height: 4,
+          width: 80,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.brown.shade400, Colors.brown.shade800],
+            ),
+            borderRadius: BorderRadius.circular(2),
           ),
         ),
-      ]),
-    ));
+      ],
+    );
   }
 
-  // Builds the individual topic chip
-  Widget _buildTopicChip(String topic) {
-    return Chip(
-      label: Text(
-        topic,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
+  // Builds an individual topic chip
+  Widget _buildTopicChip(String topic, IconData icon, BuildContext context) {
+    return InkWell(
+      onTap: () {
+        // Handle chip tap, for example, navigate to a new screen with the selected topic
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Topic(topic: topic)),
+        );
+        print("Tapped on topic: $topic");
+      },
+      borderRadius: BorderRadius.circular(20),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.brown.shade300, Colors.brown.shade800],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 6,
+              offset: Offset(0, 3),
+            ),
+          ],
         ),
-      ),
-      backgroundColor: Colors.brown,
-      elevation: 4,
-      shadowColor: Colors.brown.shade300,
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: BorderSide(color: Colors.brown.shade800, width: 1),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: Colors.white,
+              size: 20,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              topic,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

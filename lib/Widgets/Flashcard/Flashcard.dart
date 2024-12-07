@@ -172,28 +172,40 @@ class _FlashcardState extends State<Flashcard> {
       key: ValueKey(text), // Unique key for each side of the card
       width: 400,
       height: 300,
-      child: Card(
-        color: Color(0xFFBDA79B),
-        // Light blue background color for flashcards
-        elevation: 5,
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Align(
-            alignment: alignment,
-            child: AnimatedOpacity(
-              opacity: _showContent ? 1.0 : 0.0,
-              duration: Duration(milliseconds: 200),
-              // Fade-in effect for the content
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: Colors.white,
-                    fontFamily: 'Rubik',
-                    fontSize: 40,
-                    fontWeight: FontWeight.normal),
-                textAlign: alignment == Alignment.center
-                    ? TextAlign.center
-                    : TextAlign.left,
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.brown.shade400, Colors.brown.shade600],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(8), // Match the Card's border radius
+        ),
+        child: Card(
+          color: Colors.transparent, // Make the Card itself transparent
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Align(
+              alignment: alignment,
+              child: AnimatedOpacity(
+                opacity: _showContent ? 1.0 : 0.0,
+                duration: Duration(milliseconds: 200),
+                // Fade-in effect for the content
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    color: Colors.white,
+                      fontFamily: 'Rubik',
+                      fontSize: 40,
+                      fontWeight: FontWeight.normal),
+                  textAlign: alignment == Alignment.center
+                      ? TextAlign.center
+                      : TextAlign.left,
+                ),
               ),
             ),
           ),
