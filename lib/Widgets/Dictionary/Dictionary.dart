@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:app/helpers/dbHelper.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Scaffold(
-        body:Dictionary()) );
-  }
-}
 
 class Dictionary extends StatefulWidget {
   const Dictionary({super.key});
@@ -28,15 +10,15 @@ class Dictionary extends StatefulWidget {
 }
 
 class _DictionaryState extends State<Dictionary> {
-
   @override
   Widget build(BuildContext context) {
-
-    return SearchPage();
+    return const SearchPage();
   }
 }
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
   @override
   _SearchPageState createState() => _SearchPageState();
 }
@@ -44,90 +26,226 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final _controller = TextEditingController();
   List<String> _suggestions = [];
-  String _searchResult = "";
+  Word? _searchResult;
   bool _isLoading = false;
 
   void _searchWord() async {
-    String query = _controller.text.toLowerCase();
+    String query = _controller.text.trim().toLowerCase();
     if (query.isNotEmpty) {
       setState(() {
-        _isLoading = true; // Show loading indicator
-        //print(query);
+        _isLoading = true;
+        _searchResult = null;
       });
 
-      Word? result = await Word.search(query); // Call the static search method
+      Word? result = await Word.search(query);
       setState(() {
-        _isLoading = false; // Hide loading indicator
-        if (result != null) {
-          _searchResult = result.definition; // Show the definition
-        } else {
-          _searchResult = "Word not found.";
-        }
+        _isLoading = false;
+        _searchResult = result;
       });
     }
   }
-  // New method to update suggestions based on user input
+
   void _updateSuggestions(String query) async {
     if (query.isNotEmpty) {
-      // Fetch suggestions from the database
       List<String> suggestions = await Word.Suggestions(query);
       setState(() {
-        _suggestions = suggestions; // Update the suggestions state
+        _suggestions = suggestions;
       });
     } else {
-      // Clear suggestions if the query is empty
       setState(() {
         _suggestions = [];
       });
     }
   }
 
+  void _clearSearch() {
+    setState(() {
+      _controller.clear();
+      _suggestions.clear();
+      _searchResult = null;
+    });
+  }
+
+  void _copyToClipboard(String text) {
+    Clipboard.setData(ClipboardData(text: text));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Copied to clipboard!")),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child:Text("Tra cứu từ vựng")),
-        backgroundColor: Color(0xFF81C784),
+        title: const Text("Dictionary", style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: const Color(0xFF81C784),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                hintText: 'Enter a word...',
-                border: OutlineInputBorder(),
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: _searchWord,
+            // Search Bar
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      hintText: 'Search a word...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.shade200,
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: _searchWord,
+                      ),
+                    ),
+                    onChanged: _updateSuggestions,
+                    onSubmitted: (_) => _searchWord(),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: _clearSearch,
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+
+            // Suggestions List
+            if (_suggestions.isNotEmpty)
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _suggestions.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(
+                        _suggestions[index],
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      leading: const Icon(Icons.bookmark_border),
+                      onTap: () {
+                        _controller.text = _suggestions[index];
+                        _suggestions.clear();
+                        _searchWord();
+                      },
+                    );
+                  },
                 ),
               ),
-              onChanged: _updateSuggestions,
-              onSubmitted: (text) => _searchWord(),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _suggestions.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(_suggestions[index]),
-                    onTap: () {
-                      // Populate the text field with the selected suggestion
-                      _controller.text = _suggestions[index];
-                      _suggestions.clear(); // Clear suggestions after selection
-                      _searchWord(); // Execute search for the selected word
-                    },
-                  );
-                },
+
+            // Loading Indicator
+            if (_isLoading)
+              const Expanded(
+                child: Center(child: CircularProgressIndicator()),
               ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              _searchResult,
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
+
+            // Search Result Display
+            if (_searchResult != null)
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Card(
+                    margin: const EdgeInsets.all(10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    elevation: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  _searchResult!.word,
+                                  style: const TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.teal,
+                                  ),
+                                ),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.copy),
+                                onPressed: () => _copyToClipboard(_searchResult!.word),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            "Definition:",
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.brown,
+                            ),
+                          ),
+                          Text(
+                            _searchResult!.definition,
+                            style: const TextStyle(fontSize: 16, color: Colors.black87),
+                          ),
+                          const SizedBox(height: 16),
+                          if (_searchResult!.example.isNotEmpty)
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "Example:",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.brown,
+                                  ),
+                                ),
+                                Text(
+                                  _searchResult!.example,
+                                  style: const TextStyle(fontSize: 16, color: Colors.black87),
+                                ),
+                                const SizedBox(height: 16),
+                              ],
+                            ),
+                          if (_searchResult!.synonyms.isNotEmpty)
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "Synonyms:",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.brown,
+                                  ),
+                                ),
+                                Text(
+                                  _searchResult!.synonyms,
+                                  style: const TextStyle(fontSize: 16, color: Colors.black87),
+                                ),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+            // "No Results" Display
+            if (_searchResult == null && !_isLoading && _suggestions.isEmpty)
+              const Expanded(
+                child: Center(
+                  child: Text(
+                    "No results found. Try searching for a different word.",
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                ),
+              ),
           ],
         ),
       ),
@@ -135,90 +253,4 @@ class _SearchPageState extends State<SearchPage> {
   }
 }
 
-class Word {
-  final String word;
-  final String definition;
-  final String eDefinition;
-  final String example;
-  final String synonyms;
-  final String pronounce;
-  final String audio;
-  final String source;
-  final String type;
-
-  Word({
-    required this.word,
-    required this.definition,
-    required this.eDefinition,
-    required this.example,
-    required this.synonyms,
-    required this.pronounce,
-    required this.audio,
-    required this.source,
-    required this.type,
-  });
-
-  factory Word.fromMap(Map<String, dynamic> map) {
-    return Word(
-      word: map['source'],
-      definition: map['target'],
-      eDefinition: map['definition'],
-      example: map['example'],
-      synonyms: map['synonyms'],
-      pronounce: map['pronounce'],
-      audio: map['audio'],
-      source: map['source'],
-      type: map['type'],
-    );
-  }
-
-  // Method to search for a word in the database
-  static Future<Word?> search(String word) async {
-    final dbHelper = DatabaseHelper();
-    final db = await dbHelper.database;
-
-    // Query the database for the word in the 'bookmark' table
-    final List<Map<String, dynamic>> result = await db.query(
-      'bookmark',
-      where: 'source = ?',
-      whereArgs: [word],
-    );
-
-    // If no result is found, return null
-    if (result.isEmpty) {
-      return null;
-    }
-
-    // Return the first result as a Word object
-    return Word.fromMap(result.first);
-  }
-
-  // Method to retrieve a random list of words from the database (for use in games, etc.)
-  static Future<List<Word>> getRandomWords(int limit) async {
-    final dbHelper = DatabaseHelper();
-    List<Map<String, dynamic>> wordMaps = await dbHelper.getRandomWords(limit);
-
-    // Convert the list of Maps into a list of Word objects
-    return wordMaps.map((wordMap) => Word.fromMap(wordMap)).toList();
-  }
-
-  // Method to update suggestions based on a query
-  static Future<List<String>> Suggestions(String query) async {
-    List<String> suggestions = [];
-    if (query.isNotEmpty) {
-      // Fetch suggestions from the database
-      final dbHelper = DatabaseHelper();
-      final db = await dbHelper.database;
-
-      final List<Map<String, dynamic>> results = await db.query(
-        'bookmark',
-        where: 'source LIKE ? ',
-        whereArgs: ['$query%'],
-      );
-
-      suggestions = results.map((e) => e['source'] as String).toList(); // Extract the 'source' field for suggestions
-    }
-    return suggestions;
-  }
-}
 
