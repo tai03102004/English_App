@@ -35,6 +35,7 @@ class Pronunciation extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 await audioPlayer.play(AssetSource(audioPath));
+                print("hehe");
               },
               child: Text("Play Audio"),
             ),

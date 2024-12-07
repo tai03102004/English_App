@@ -925,7 +925,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-<<<<<<< Updated upstream
   uuid:
     dependency: transitive
     description:
@@ -934,8 +933,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.1"
-=======
->>>>>>> Stashed changes
   vector_graphics:
     dependency: transitive
     description:

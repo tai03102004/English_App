@@ -18,7 +18,7 @@ class Pronunciation_Topic extends StatelessWidget {
       body: ListView.builder(
         itemCount: ipaSounds.length,
         itemBuilder: (context, index) {
-          String audioPath = '/audios/ipa/${index + 1}.mp3';
+          String audioPath = 'audios/ipa/${index + 1}.mp3';
           String title = ipaSounds[index].symbol;
           String tip1 = ipaSounds[index].description;
           String tip2 = ipaSounds[index].mouthPosition;
