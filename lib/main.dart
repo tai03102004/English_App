@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 
 import 'Pages/Auth/Login.dart';
 import 'Pages/Auth/SignUp.dart';
-import 'Pages/Profile/UserProfilePage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => MainPage(),
+        '/': (context) => GetStarted(),
         '/home': (context) => MainPage(),
         '/login': (context) => Login(),
         '/signup': (context) => SignUp(),

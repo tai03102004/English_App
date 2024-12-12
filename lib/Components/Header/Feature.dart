@@ -84,7 +84,7 @@ class _FindFriendsButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color: Colors.white,
         ),
-        width: AppSizes.blockSizeHorizontal * 35,
+        width: AppSizes.blockSizeHorizontal * 38,
         child: Row(
           children: [
             Image.asset(
